@@ -1,0 +1,42 @@
+---
+title: "backup"
+author: "Valerie Gartner"
+date: "12/7/2018"
+output: html_document
+---
+
+Load Libraries
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+
+Import data
+```{r}
+setwd("/mnt/hardac/gpfs/fs1/data/wraycompute/val/bin/")
+chrom14_SNPs <- read.csv('Chrom14_vivax_DuffyNeg_allele_freq_output.csv')
+
+chrom14_SNPs <- chrom14_SNPs %>% group_by(sample)
+
+#check to make sure grouping worked
+#summarized <- chrom14_SNPs %>% summarize()
+#summarized
+
+```
+
+
+Plot frequencies by sample
+```{r}
+plot_frequency <- ggplot(chrom14_SNPs, aes(index, frequency)) + geom_point()
+plot_frequency + facet_grid(. ~ sample)
+```
+
+Plot density by sample
+```{r}
+#first separate the groups
+
+
+plot_density <- plot(density(chrom14_SNPs$frequency))
+```
+

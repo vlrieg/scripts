@@ -1,0 +1,32 @@
+---
+title: "Not In Data Process"
+author: "Valerie Gartner"
+date: "4/30/2019"
+output: html_document
+---
+
+```{r}
+#read in files as data frames
+fastq <- as.data.frame(read.csv('~/Desktop/fastq-files.csv')) #all unprocessed data
+dedup <- as.data.frame(read.csv('~/Desktop/deduped-files.csv')) #the data that has been processed successfully
+
+#give column names
+names(dedup) <- c("dedup-files")
+names(fastq) <- c("fastq-files")
+
+#filter for unique values
+unprocessed <- fastq %>% filter(!(fastq$`fastq-files` %in% dedup$`dedup-files`)) # which accession Nos were not processed?
+
+unprocessed
+# looks like:
+#fastq-files
+#<fctr>
+#SRR1759522				
+#SRR6361515				
+#SRR6361517				
+#SRR6361542				
+#SRR6361543				
+#SRR6361550				
+#SRR6361608				
+
+```

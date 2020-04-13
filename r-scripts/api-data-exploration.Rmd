@@ -1,0 +1,79 @@
+---
+title: "Api-data-exploration"
+author: "Valerie Gartner"
+date: "1/16/2020"
+output: html_document
+---
+
+```{r}
+library(adegenet) #https://rdrr.io/cran/adegenet/man/fasta2DNAbin.html
+library(haplo.stats)
+library(pegas)
+library(ggplot2)
+library(dplyr)
+```
+
+
+
+```{r}
+apicoplast <- fasta2DNAbin("/Users/vgartner/Dropbox (Duke Bio_Ea)/organelle-subsample/global-apicoplast-PvP01.fasta", quiet=FALSE, chunkSize = 119, snpOnly = TRUE)
+```
+
+
+```{r}
+apigenind <- DNAbin2genind(apicoplast, pop=NULL, exp.char=c("a","t","g","c"), polyThres=1/100)
+apigenind
+```
+
+```{r}
+apidf <- genind2df(apigenind)
+apidf
+```
+
+```{r}
+na_count <-sapply(apidf, function(y) sum(is.na(y)))
+na_count <- data.frame(na_count)
+na_count <- cbind(rownames(na_count), data.frame(na_count, row.names=NULL))
+colnames(na_count)[1] <- "col.number"
+colnames(na_count)[2] <- "na.count"
+na_count
+
+
+#what fraction of each column is missing?
+na_count$percentage <- sapply(apidf, function(y) mean(is.na(y)))
+na_count
+```
+
+```{r}
+graph <- ggplot(na_count, aes(col.number, na.count))
+graph + geom_bar(stat="identity")
+
+#graph2 <- ggplot(na_count, aes(col.number, percentage))
+#graph2 + geom_bar(stat="identity")
+
+```
+
+```{r}
+shortapi <- fasta2DNAbin("/Users/vgartner/Dropbox (Duke Bio_Ea)/organelle-subsample/global-apicoplast-PvP01-5percN.fasta", quiet=TRUE, chunkSize = 119, snpOnly = TRUE)
+shortapigenind <- DNAbin2genind(shortapi, pop=NULL, exp.char=c("a","t","g","c"), polyThres=1/100)
+shortapidf <- genind2df(shortapigenind)
+
+shortna_count <-sapply(shortapidf, function(y) sum(is.na(y)))
+shortna_count <- data.frame(shortna_count)
+shortna_count <- cbind(rownames(shortna_count), data.frame(shortna_count, row.names=NULL))
+colnames(shortna_count)[1] <- "col.number"
+colnames(shortna_count)[2] <- "na.count"
+#shortna_count
+
+graph3 <- ggplot(shortna_count, aes(col.number, na.count))
+graph3 + geom_bar(stat="identity")
+
+#what fraction of each column is missing?
+shortna_count$percentage <- sapply(shortapidf, function(y) mean(is.na(y)))
+shortna_count
+
+
+#graph4 <- ggplot(shortna_count, aes(col.number, percentage))
+#graph4 + geom_bar(stat="identity")
+```
+

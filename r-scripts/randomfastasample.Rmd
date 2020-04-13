@@ -1,0 +1,59 @@
+---
+title: "Pick Random Subset of Fasta Sequences"
+author: "Valerie Gartner"
+date: "3/17/2020"
+output: html_document
+---
+
+
+Setup
+```{r}
+library(seqinr)
+setwd("/mnt/hardac/gpfs/fs1/data/wraycompute/val/beast2/taylor-escalante-reproduction")
+#args = commandArgs(trailingOnly=TRUE) #for script version only
+```
+
+Read in fasta file
+```{r}
+dnafile <- read.fasta(file = "pvivax_mtDNA_locationFormat.muscle.fasta", as.string = TRUE)
+#methods(class = "SeqFastadna")
+```
+
+Get accession names
+```{r}
+names <- getName(dnafile)
+```
+
+
+Select random subset of samples by name
+```{r}
+# Total number of samples in the fasta file
+#total_num = length(names)
+#total_num
+# Select how many you want in the subsample
+#subset_num = total_num / 2
+#subset_num
+
+sample_size = 250 #change this according to how large your subsample should be
+
+# Generate random subsample list
+rand_subsample <- sample(names, size=sample_size, replace=F)
+#length(rand_subsample) #check the number generated
+#rand_subsample #check accession names in list
+```
+
+Write new fasta file containing only the randomly generated subset of samples
+```{r}
+
+outfile_name <- paste("subsample_of_", sample_size, ".fasta", sep="")
+
+# New object with only the subset of samples picked above
+seqs_towrite <- dnafile[c(which(names(dnafile) %in% rand_subsample))]
+
+# Make sure the working directory is correct
+setwd("/mnt/hardac/gpfs/fs1/data/wraycompute/val/beast2/taylor-escalante-reproduction")
+
+# Write to file
+filename <- 
+write.fasta(sequences = seqs_towrite, names=names(seqs_towrite), file.out = "out.fasta", open="w")
+```

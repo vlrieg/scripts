@@ -1,0 +1,26 @@
+---
+title: "accessions"
+author: "Valerie Gartner"
+date: "4/9/2020"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+```
+```{r}
+all_data <- read.csv("Dropbox (Duke Bio_Ea)/coalescent/samples/sample_info.csv", header = TRUE)
+
+```
+
+```{r}
+#only cambodia samples
+Cambodia <- filter(all_data, all_data$country == 'Cambodia')
+Cambodia
+```
+
+```{r}
+#write out
+write.csv(Cambodia, "Desktop/Cambodia.csv", row.names = FALSE)
+
+```

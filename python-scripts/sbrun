@@ -1,0 +1,56 @@
+#!/data/wraycompute/malaria/Applications/python/local/bin/python
+from __future__ import print_function
+import os
+import subprocess
+import sys
+import shlex
+
+def which(program):
+    def is_exe(fpath):
+        return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+
+    fpath, fname = os.path.split(program)
+    if fpath:
+        if is_exe(program):
+            return program
+    else:
+        for path in os.environ["PATH"].split(os.pathsep):
+            path = path.strip('"')
+            exe_file = os.path.join(path, program)
+            if is_exe(exe_file):
+                return exe_file
+
+    return None
+
+def make_script(cmd_args):
+    if len(cmd_args) < 1:
+        print("Error: no arguments!")
+        exit(1)
+    script = "#!/bin/bash\n"
+    script = script + "module add R gnuplot\n"
+    for arg in cmd_args:
+        script = script + '"{}" '.format(arg)
+    return script
+
+if which('sbatch') is None:
+    print("Error: I can't find the program 'sbatch' to submit your job!")
+    print("Error: Is SLURM installed?")
+    exit(1)
+
+cmd = sys.argv[1:]
+
+job_name = os.path.basename(os.path.abspath(sys.argv[1]))
+sbatch_args =  ["--export=ALL","--workdir={}".format(os.getcwd()), "--job-name={}".format(job_name)]
+sbatch_args = sbatch_args + shlex.split(os.environ.get("SBATCH_ARGS",""))
+sbatch_cmd = ["sbatch"] + sbatch_args
+sys.stderr.write("Running sbatch with args {}\n".format(sbatch_args))
+sys.stderr.write("Running command {}\n".format(cmd))
+
+script = make_script(cmd)
+for arg in sbatch_args:
+    if arg == "--dry-run":
+        print(script)
+        exit(1)
+
+p = subprocess.Popen(sbatch_cmd, cwd=os.getcwd(), stdin=subprocess.PIPE)
+p.communicate(input=script)

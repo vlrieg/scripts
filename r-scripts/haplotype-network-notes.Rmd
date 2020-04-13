@@ -1,0 +1,114 @@
+---
+title: "Haplotype Networks"
+author: "Valerie Gartner"
+date: "1/10/2020"
+output: html_document
+---
+
+```{r}
+library(adegenet) #https://rdrr.io/cran/adegenet/man/fasta2DNAbin.html
+library(haplo.stats)
+library(pegas)
+#library(gsubfn)
+```
+
+```{r}
+#setwd("Users/vgartner/Dropbox (Duke Bio_Ea)//organelle-subsample/")
+
+#apicoplast <- fasta2DNAbin("/Users/vgartner/Dropbox (Duke Bio_Ea)/organelle-subsample/global-apicoplast.fasta", quiet=FALSE, chunkSize = 10, snpOnly = TRUE)
+#apicoplast <- fasta2DNAbin("/Users/vgartner/Dropbox (Duke Bio_Ea)/organelle-subsample/smol.fasta", quiet=FALSE, chunkSize = 10, snpOnly = TRUE)
+
+apicoplast5N <- fasta2DNAbin("/Users/vgartner/Dropbox (Duke Bio_Ea)/organelle-subsample/global-apicoplast-5percN.fasta", quiet=FALSE, chunkSize = 10, snpOnly = TRUE)
+mito5N <- fasta2DNAbin("/Users/vgartner/Dropbox (Duke Bio_Ea)/organelle-subsample/all-global-mito-5percN.fasta", quiet=FALSE, chunkSize = 10, snpOnly = TRUE)
+```
+```{r}
+percfreq <- haplotype(apicoplast5N)
+percfreq <- sort(percfreq, what = "label") #necessary step
+#https://stackoverflow.com/questions/31220586/r-how-to-plot-correct-pie-charts-in-haplonet-haplotyp-networks-pegas-ape-a/33107267#33107267
+#rownames(percfreq)
+
+#set plot label to frequencies? https://stackoverflow.com/questions/31220586/r-how-to-plot-correct-pie-charts-in-haplonet-haplotyp-networks-pegas-ape-a/33107267#33107267
+attr(percfreq, "labels") <- attr(percfreq, "freq")
+```
+
+```{r}
+#percnet <- haploNet(percfreq)
+percnet <- haploNet(percfreq)
+ind.hap<-with(
+	stack(setNames(attr(percfreq, "index"), rownames(percfreq))),
+	table(hap=ind, pop=gsub("-.*$", "", rownames(apicoplast5N)))
+)
+#rownames(apicoplast5N)
+#typeof(rownames(apicoplast5N))
+#typeof(apicoplast5N)
+
+#have = rownames(apicoplast5N)
+#want <- sub(pattern = "(^\\[[:alpha:]]+\\-).*", replacement = "\\1", x = have) #this doesn't work...?
+# https://stackoverflow.com/questions/37492948/keep-only-numbers-before-the-first-hyphen-and-the-hyphen-itself
+
+#want <- gsub("-.*$", "", have) #https://stackoverflow.com/a/15895183
+#want
+
+
+col.vec <- adjustcolor(rainbow(ncol(ind.hap)), alpha=0.4)
+
+#plot(percnet, size = attr(percnet, "freq"), scale.ratio=1.00, bg=col.vec, pie=ind.hap, labels=F, legend=T, threshold = 0) #this one
+#legend('topleft', capitalize(colnames(ind.hap)), col=rainbow(ncol(ind.hap)), pch=20, cex=0.7)
+
+#set plot label to frequencies? https://stackoverflow.com/questions/31220586/r-how-to-plot-correct-pie-charts-in-haplonet-haplotyp-networks-pegas-ape-a/33107267#33107267
+#attr(apicoplast5N, "labels") <- attr(apicoplast5N, "freq")
+
+# https://stackoverflow.com/a/25756818/10176950
+plot(percnet, size=10*log2(attr(percnet, "freq")), scale.ratio = 0.2, cex = 0.8, pie=ind.hap, main="apicoplast")
+legend("bottomright", colnames(ind.hap), col=rainbow(ncol(ind.hap)), pch=20)
+
+##########
+#plot(percnet)
+#plot(net, size = attr(net, "freq"), fast = TRUE)
+#plot(percnet, size=attr(net, "freq"), scale.ratio = 2, cex = 0.8)
+```
+
+```{r}
+mitofreq <- haplotype(mito5N)
+sort(mitofreq, what = "label")
+
+mitonet <- haploNet(mitofreq)
+ind.hap<-with(
+	stack(setNames(attr(mitofreq, "index"), rownames(mitofreq))),
+	table(hap=ind, pop=gsub("-.*$", "", rownames(mito5N))))
+
+
+col.vec <- adjustcolor(rainbow(ncol(ind.hap)), alpha=0.4)
+
+plot(mitonet, size=10*log2(attr(mitonet, "freq")), scale.ratio = 10, cex = 0.8, pie=ind.hap, show.mutation=0, th=0, main="mitochondria")
+legend("bottomleft", colnames(ind.hap), col=rainbow(ncol(ind.hap)), pch=19)
+
+#https://github.com/mfumagalli/Clathrins_evolution/blob/a091129fdb6ba8c2226a96c2cd1454a590ef7cd7/Scripts/plotNet_allsites.R
+```
+
+
+
+
+```{r}
+#x <- woodmouse[sample(15, size = 110, replace = TRUE),]
+#freq_test <- haplotype(woodmouse)
+#apicoplast2 <- apicoplast[sample(15, size = 110, replace = TRUE),]
+#frequencies <- haplotype(apicoplast2)
+#net <- haploNet(frequencies)
+#plot(net)
+
+#freq_test
+#frequencies
+#summary(frequencies)
+
+#x <- diffHaplo(frequencies,1:2)
+#x
+#x2 <- diffHaplo(freq_test,1:15)
+#x
+
+#https://www.rdocumentation.org/packages/pegas/versions/0.12/topics/haploNet
+#The probabilities calculated with Templeton et al.'s (1992) method may give non-finite values with very divergent sequences, resulting in an error from haploNet. If this happens, it may be better to use getProb = FALSE
+#Note
+#If two haplotypes are very different, haploNet will likely fail (error during integration due to non-finite values).
+```
+

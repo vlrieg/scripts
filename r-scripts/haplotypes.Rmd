@@ -1,0 +1,31 @@
+---
+title: "Haplotype Info"
+author: "Valerie Gartner"
+date: "9/25/2019"
+output: html_document
+---
+
+```{r setup}
+library(adegenet) #https://rdrr.io/cran/adegenet/man/fasta2DNAbin.html
+library(haplo.stats)
+library(pegas)
+```
+
+```{r}
+#setwd("Users/vgartner/Dropbox (Duke Bio_Ea)/apicoplast")
+
+#import data
+#apicoplast <- fasta2DNAbin("Ethiopia-api-Ns-calculated.fasta", quiet=FALSE, chunkSize = 10, snpOnly = TRUE)
+#apicoplast <- fasta2DNAbin("Colombia-apicoplasts.fasta", quiet=FALSE, chunkSize = 10, snpOnly = TRUE)
+apicoplast <- fasta2DNAbin("misc-regions-API-seqs-less-than-30-perc-N.fasta", quiet=FALSE, chunkSize = 10, snpOnly = TRUE)
+#mito <- fasta2DNAbin("../mitochondria/vivax-only-mito.fasta", quiet=FALSE, chunkSize = 10, snpOnly = TRUE)
+
+```
+
+```{r}
+frequencies <- haplotype(apicoplast)
+plot(sort(frequencies))
+x <- diffHaplo(frequencies,1:24)
+x
+names(frequencies)
+```
