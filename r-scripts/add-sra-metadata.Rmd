@@ -1,0 +1,16 @@
+---
+title: "SRA metadata"
+author: "Valerie Gartner"
+date: "4/14/2020"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+all_samples <- read.csv("Dropbox (Duke Bio_Ea)/coalescent/samples/sample_info.csv", header = TRUE)
+sra_table <- read.csv("Dropbox (Duke Bio_Ea)/coalescent/samples/SraRunTable.txt", header = TRUE)
+
+```

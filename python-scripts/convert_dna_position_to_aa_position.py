@@ -7,5 +7,11 @@ import math
 
 dna_position = sys.argv[1]
 
-aa_position = math.ceil(float(dna_position)/3)
-print(f'DNA position {dna_position}\nis equeal to\nAmino Acid postiion {aa_position}')
+def find_aa(pos):
+    aa_position = math.ceil(float(pos)/3)
+    return aa_position
+
+
+output = find_aa(dna_position)
+
+print(f'DNA position {dna_position}\nis equeal to\nAmino Acid postiion {output}')

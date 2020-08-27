@@ -6,6 +6,11 @@ output: html_document
 ---
 
 ```{r}
+library(dplyr)
+```
+
+```{r}s
+
 #read in files as data frames
 fastq <- as.data.frame(read.csv('~/Desktop/fastq-files.csv')) #all unprocessed data
 dedup <- as.data.frame(read.csv('~/Desktop/deduped-files.csv')) #the data that has been processed successfully

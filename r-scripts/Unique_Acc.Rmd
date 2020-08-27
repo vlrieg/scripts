@@ -1,0 +1,40 @@
+---
+title: "Missing Accessions"
+author: "Valerie Gartner"
+date: "08/27/2020"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+#read in files as data frames
+want <- as.data.frame(read.csv('~/Dropbox (Duke Bio_Ea)/de-novo-genome-annotations/pvivax-transcriptomics/to-use_Acc_List.csv')) #complete list of accessions you want
+have <- as.data.frame(read.csv('~/Dropbox (Duke Bio_Ea)/de-novo-genome-annotations/pvivax-transcriptomics/downloaded-8.27.2020.csv')) #the accessions you have right now
+
+#give column names
+names(have) <- c("have-acc")
+names(want) <- c("want-acc")
+
+#filter for unique values
+missingAccessions <- want %>% filter(!(want$`want-acc` %in% have$`have-acc`)) # which accession Nos were not processed?
+
+missingAccessions
+# looks like:
+#fastq-files
+#<fctr>
+#SRR1759522				
+#SRR6361515				
+#SRR6361517				
+#SRR6361542				
+#SRR6361543				
+#SRR6361550				
+#SRR6361608				
+
+setwd('~/Dropbox (Duke Bio_Ea)/de-novo-genome-annotations/pvivax-transcriptomics/')
+write.table(missingAccessions, "missing-accessions.txt", sep=",",col.names=F,row.names=F,quote=F)
+
+
+```
