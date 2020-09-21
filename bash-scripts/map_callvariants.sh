@@ -41,7 +41,7 @@ fi
 
 
 RUN_PICARD="java -jar -Xmx7g /data/wraycompute/malaria/Applications/picard/picard.jar"
-RUN_GATK3="java -jar /home/vdp5/src/GenomeAnalysisTK.jar" #version 3.8-0-ge9d806836
+RUN_GATK3="java -jar /data/wraycompute/malaria/Applications/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar" #version 3.8-1-0-gf15c1c3ef
 
 ################### mapping ###################
 
