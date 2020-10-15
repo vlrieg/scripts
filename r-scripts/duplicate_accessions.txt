@@ -1,0 +1,318 @@
+accession,region,country,site,population,date,study,sample_ID,exclude,source,doi
+SRR1568115,sasia,India(NYC),NA,NA,NA,NA,NA,NA,NA,NA
+SRR1562851,samerica,Peru,PuertoAmerica,NA,NA,NA,NA,NA,Hupalo_2016,10.1038/ng.3588
+SRR1562871,samerica,Peru,Delta2,NA,NA,NA,NA,NA,Hupalo_2016,10.1038/ng.3588
+SRR1562931,samerica,Peru,Padrecocha,NA,NA,NA,NA,NA,Hupalo_2016,10.1038/ng.3588
+SRR1562958,samerica,Peru,Delta3,NA,NA,NA,NA,NA,Hupalo_2016,10.1038/ng.3588
+SRR1564655,samerica,Peru,Sulla,NA,NA,NA,NA,NA,Hupalo_2016,10.1038/ng.3588
+SRR1564661,samerica,Peru,Iquitos,NA,NA,NA,NA,NA,Hupalo_2016,10.1038/ng.3588
+SRR1568162,samerica,Peru,PampaHermosa,NA,NA,NA,NA,NA,Hupalo_2016,10.1038/ng.3588
+SRR1568178,samerica,Peru,Sulla,NA,NA,NA,NA,NA,Hupalo_2016,10.1038/ng.3588
+SRR1568232,samerica,Peru,Padrecocha,NA,NA,NA,NA,NA,Hupalo_2016,10.1038/ng.3588
+SRR5136536,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136549,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136531,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136532,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136533,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136535,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136537,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136538,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136539,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136540,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136541,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136542,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136543,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136545,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136547,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136548,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136550,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR5136551,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1620825,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1620827,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1620831,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1620840,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1620842,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1620845,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1620848,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1620899,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1620902,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1620905,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627520,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627554,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627603,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627656,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627693,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627727,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627764,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627798,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627862,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627932,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1798621,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1798613,samerica,Peru,MadredeDios,NA,NA,NA,NA,tree,NA,NA
+SRR1798616,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1798618,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1798625,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1798622,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1798624,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1798620,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1798626,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1798628,samerica,Peru,NA,NA,NA,NA,NA,NA,NA,NA
+SRR1627452,samerica,Peru,NA,NA,NA,NA,NA,tree,NA,NA
+ERR054089,NA,Malaysia,Sabah,West coast Division,5/9/11,1157,PY0002-C,NA,10.1038/s41467-018-04965-4,NA
+ERR152414,NA,Malaysia,Sabah,West coast Division,5/9/11,1157,PY0004-C,NA,10.1038/s41467-018-04965-4,NA
+ERR152415,NA,Malaysia,Sabah,West coast Division,6/7/11,1157,PY0005-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527337,NA,Malaysia,Sabah,Kudat Division,1/14/13,1157,PY0018-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527363,NA,Malaysia,Sabah,Kudat Division,1/24/13,1157,PY0019-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138855,NA,Malaysia,Sabah,Kudat Division,5/25/14,1157,PY0023-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138856,NA,Malaysia,Sabah,Kudat Division,10/21/14,1157,PY0024-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138857,NA,Malaysia,Sabah,Kudat Division,10/30/14,1157,PY0026-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138858,NA,Malaysia,Sabah,Kudat Division,11/12/14,1157,PY0027-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138861,NA,Malaysia,Sabah,Kudat Division,12/10/14,1157,PY0034-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138862,NA,Malaysia,Sabah,Kudat Division,12/18/14,1157,PY0035-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138864,NA,Malaysia,Sabah,Kudat Division,12/3/14,1157,PY0042-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138865,NA,Malaysia,Sabah,Kudat Division,2/25/14,1157,PY0044-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138866,NA,Malaysia,Sabah,Kudat Division,4/22/14,1157,PY0045-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138867,NA,Malaysia,Sabah,Kudat Division,8/4/14,1157,PY0048-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138868,NA,Malaysia,Sabah,Kudat Division,9/4/14,1157,PY0050-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1106842,NA,Malaysia,Sabah,Kudat Division,9/4/14,1157,PY0051-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138869,NA,Malaysia,Sabah,Kudat Division,9/17/14,1157,PY0053-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138870,NA,Malaysia,Sabah,Kudat Division,9/22/14,1157,PY0054-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138871,NA,Malaysia,Sabah,Kudat Division,9/22/14,1157,PY0055-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138872,NA,Malaysia,Sabah,Kudat Division,9/24/14,1157,PY0056-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138873,NA,Malaysia,Sabah,Kudat Division,9/30/14,1157,PY0057-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1106843,NA,Malaysia,Sabah,Kudat Division,10/5/14,1157,PY0058-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138875,NA,Malaysia,Sabah,Kudat Division,10/10/14,1157,PY0060-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138876,NA,Malaysia,Sabah,Kudat Division,10/10/14,1157,PY0061-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138879,NA,Malaysia,Sabah,Kudat Division,11/7/14,1157,PY0067-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1106846,NA,Malaysia,Sabah,Kudat Division,11/7/14,1157,PY0068-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138881,NA,Malaysia,Sabah,Kudat Division,11/14/14,1157,PY0072-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138882,NA,Malaysia,Sabah,Kudat Division,12/5/14,1157,PY0073-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138883,NA,Malaysia,Sabah,Kudat Division,12/6/14,1157,PY0074-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138884,NA,Malaysia,Sabah,Kudat Division,12/16/14,1157,PY0075-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1138885,NA,Malaysia,Sabah,Kudat Division,12/19/14,1157,PY0076-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475425,NA,Malaysia,Sabah,Kudat Division,1/10/14,1157,PY0085-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475427,NA,Malaysia,Sabah,Kudat Division,3/31/14,1157,PY0087-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475395,NA,Malaysia,Sabah,Kudat Division,4/10/13,1157,PY0088-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475451,NA,Malaysia,Sabah,Kudat Division,4/15/13,1157,PY0089-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475441,NA,Malaysia,Sabah,Kudat Division,7/2/13,1157,PY0090-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475396,NA,Malaysia,Sabah,Kudat Division,12/18/13,1157,PY0092-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475397,NA,Malaysia,Sabah,Kudat Division,1/7/14,1157,PY0093-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475398,NA,Malaysia,Sabah,Kudat Division,1/8/14,1157,PY0094-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475399,NA,Malaysia,Sabah,Kudat Division,1/17/14,1157,PY0096-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475418,NA,Malaysia,Sabah,Kudat Division,1/28/14,1157,PY0099-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475419,NA,Malaysia,Sabah,Kudat Division,1/28/14,1157,PY0100-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475420,NA,Malaysia,Sabah,Kudat Division,2/17/14,1157,PY0101-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475429,NA,Malaysia,Sabah,Kudat Division,4/4/14,1157,PY0103-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475430,NA,Malaysia,Sabah,Kudat Division,8/1/14,1157,PY0105-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475439,NA,Malaysia,Sabah,Kudat Division,4/3/14,1157,PY0107-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475456,NA,Malaysia,Sabah,Kudat Division,12/24/13,1157,PY0114-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475437,NA,Malaysia,Sabah,Kudat Division,8/12/14,1157,PY0117-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475457,NA,Malaysia,Sabah,Kudat Division,5/19/14,1157,PY0119-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475434,NA,Malaysia,Sabah,Kudat Division,5/28/14,1157,PY0120-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111724,NA,Thailand,Tak Province,Maesod,1/28/11,1154,PD0165-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111710,NA,Thailand,Tak Province,Maesod,3/14/11,1154,PD0166-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111727,NA,Thailand,Tak Province,Maesod,4/20/11,1154,PD0167-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111721,NA,Thailand,Tak Province,Maesod,5/14/11,1154,PD0168-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111728,NA,Thailand,Tak Province,Maesod,5/18/11,1154,PD0169-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111717,NA,Thailand,Tak Province,Maesod,5/22/11,1154,PD0170-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111713,NA,Thailand,Tak Province,Maesod,5/22/11,1154,PD0171-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111719,NA,Thailand,Tak Province,Maesod,5/25/11,1154,PD0172-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111720,NA,Thailand,Tak Province,Maesod,6/1/11,1154,PD0173-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111709,NA,Thailand,Tak Province,Phopphra,6/6/11,1154,PD0174-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111714,NA,Thailand,Tak Province,Maesod,6/6/11,1154,PD0175-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111716,NA,Thailand,Tak Province,Maesod,6/10/11,1154,PD0176-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111725,NA,Thailand,Tak Province,Maesod,6/11/11,1154,PD0177-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111718,NA,Thailand,Tak Province,Maesod,6/27/11,1154,PD0178-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111715,NA,Thailand,Tak Province,Maesod,6/29/11,1154,PD0179-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111723,NA,Thailand,Tak Province,Maesod,6/29/11,1154,PD0180-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111722,NA,Thailand,Tak Province,Maesod,7/3/11,1154,PD0181-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111712,NA,Thailand,Tak Province,Maesod,7/6/11,1154,PD0182-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111726,NA,Thailand,Tak Province,Maesod,4/20/11,1154,PD0183-C,NA,10.1038/s41467-018-04965-4,NA
+ERR111711,NA,Thailand,Tak Province,Maesod,9/1/11,1154,PD0184-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337595,NA,Thailand,Tak Province,Maesod,1/1/11,1154,PD0593-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337599,NA,Thailand,Tak Province,Maesod,1/24/09,1154,PD0594-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337602,NA,Thailand,Tak Province,Maesod,8/2/10,1154,PD0595-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337605,NA,Thailand,Tak Province,Thasongyang,10/21/11,1154,PD0596-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337608,NA,Thailand,Tak Province,Maesod,2/6/09,1154,PD0597-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337610,NA,Thailand,Tak Province,Maesod,8/17/09,1154,PD0598-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337613,NA,Thailand,Tak Province,Phopphra,1/27/12,1154,PD0599-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337616,NA,Thailand,Tak Province,Maesod,8/5/09,1154,PD0600-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337619,NA,Thailand,Tak Province,Maesod,5/7/12,1154,PD0601-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337622,NA,Thailand,Tak Province,Maesod,3/15/10,1154,PD0602-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337625,NA,Thailand,Tak Province,Maesod,4/2/10,1154,PD0603-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337628,NA,Thailand,Tak Province,Maesod,3/3/10,1154,PD0604-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337596,NA,Thailand,Tak Province,Maesod,1/29/11,1154,PD0605-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337600,NA,Thailand,Tak Province,Maesod,3/2/10,1154,PD0606-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337603,NA,Thailand,Tak Province,Thasongyang,12/28/11,1154,PD0607-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337606,NA,Thailand,Tak Province,Maesod,8/24/12,1154,PD0608-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337609,NA,Thailand,Tak Province,Maesod,8/6/12,1154,PD0609-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337611,NA,Thailand,Tak Province,Phopphra,8/20/10,1154,PD0610-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337614,NA,Thailand,Tak Province,Maesod,1/4/12,1154,PD0611-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337617,NA,Thailand,Tak Province,Maesod,12/22/10,1154,PD0612-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337620,NA,Thailand,Tak Province,Maesod,7/16/07,1154,PD0613-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337623,NA,Thailand,Tak Province,Maesod,7/16/07,1154,PD0614-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337626,NA,Thailand,Tak Province,Phopphra,8/30/11,1154,PD0615-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337629,NA,Thailand,Tak Province,Maesod,5/9/12,1154,PD0616-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337597,NA,Thailand,Tak Province,Maesod,7/21/12,1154,PD0617-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337601,NA,Thailand,Tak Province,Thasongyang,11/10/11,1154,PD0618-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337604,NA,Thailand,Tak Province,Thasongyang,6/13/12,1154,PD0619-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337607,NA,Thailand,Tak Province,Maesod,4/19/12,1154,PD0620-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337612,NA,Thailand,Tak Province,Maesod,9/13/12,1154,PD0622-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337615,NA,Thailand,Tak Province,Thasongyang,5/12/12,1154,PD0623-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337618,NA,Thailand,Tak Province,Thasongyang,8/15/12,1154,PD0624-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337621,NA,Thailand,Tak Province,Phopphra,6/7/12,1154,PD0625-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527350,NA,Thailand,Tak Province,Maesod,7/9/07,1154,PD0674-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527352,NA,Thailand,Tak Province,Maesod,7/1/11,1154,PD0675-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527353,NA,Thailand,Tak Province,Phopphra,5/8/12,1154,PD0676-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527354,NA,Thailand,Tak Province,Maesod,4/19/12,1154,PD0677-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527355,NA,Thailand,Tak Province,Phopphra,3/25/11,1154,PD0678-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527356,NA,Thailand,Tak Province,Maesod,10/13/07,1154,PD0679-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527358,NA,Thailand,Tak Province,Maesod,10/27/06,1154,PD0680-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527370,NA,Thailand,Tak Province,Maesod,7/5/07,1154,PD0681-C,NA,10.1038/s41467-018-04965-4,NA
+ERR713941,NA,Thailand,Tak Province,Maesod,4/12/11,1154,PD0682-CW,NA,10.1038/s41467-018-04965-4,NA
+ERR527361,NA,Thailand,Tak Province,Maesod,2/18/11,1154,PD0683-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527374,NA,Thailand,Tak Province,Phopphra,11/29/06,1154,PD0684-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527351,NA,Thailand,Tak Province,Phopphra,7/13/13,1154,PD0685-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527364,NA,Thailand,Tak Province,Maesod,9/17/07,1154,PD0686-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527365,NA,Thailand,Tak Province,Maesod,5/17/12,1154,PD0687-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527366,NA,Thailand,Tak Province,Maesod,7/18/11,1154,PD0688-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527378,NA,Thailand,Tak Province,Phopphra,8/4/11,1154,PD0689-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527367,NA,Thailand,Tak Province,Phopphra,1/12/11,1154,PD0690-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527381,NA,Thailand,Tak Province,Phopphra,10/25/06,1154,PD0691-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527369,NA,Thailand,Tak Province,Maesod,12/21/11,1154,PD0692-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527371,NA,Thailand,Tak Province,Maesod,12/24/10,1154,PD0693-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527372,NA,Thailand,Tak Province,Phopphra,2/24/11,1154,PD0694-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527384,NA,Thailand,Tak Province,Thasongyang,5/17/11,1154,PD0695-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527362,NA,Thailand,Tak Province,Thasongyang,2/20/12,1154,PD0696-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527376,NA,Thailand,Tak Province,Phopphra,11/6/06,1154,PD0697-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527377,NA,Thailand,Tak Province,Phopphra,11/8/06,1154,PD0698-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527340,NA,Thailand,Tak Province,Phopphra,9/12/11,1154,PD0699-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527342,NA,Thailand,Tak Province,Maesod,7/4/07,1154,PD0700-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527344,NA,Thailand,Tak Province,Phopphra,8/10/11,1154,PD0701-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527380,NA,Thailand,Tak Province,Maesod,4/25/13,1154,PD0702-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527345,NA,Thailand,Tak Province,Maesod,4/9/12,1154,PD0703-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527382,NA,Thailand,Tak Province,Thasongyang,2/13/13,1154,PD0704-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527348,NA,Thailand,Tak Province,Maesod,5/22/07,1154,PD0705-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527383,NA,Thailand,Tak Province,Maesod,6/29/11,1154,PD0706-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527385,NA,Thailand,Tak Province,Maesod,2/8/07,1154,PD0707-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527375,NA,Thailand,Tak Province,Thasongyang,11/19/11,1154,PD0708-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527338,NA,Thailand,Tak Province,Maesod,2/28/13,1154,PD0709-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527339,NA,Thailand,Tak Province,Maesod,7/9/07,1154,PD0710-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527341,NA,Thailand,Tak Province,Maesod,2/17/11,1154,PD0711-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527343,NA,Thailand,Tak Province,Phopphra,11/7/06,1154,PD0712-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527379,NA,Thailand,Tak Province,Maesod,2/4/13,1154,PD0713-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527368,NA,Thailand,Tak Province,Maesod,11/7/12,1154,PD0714-C,NA,10.1038/s41467-018-04965-4,NA
+ERR527346,NA,Thailand,Tak Province,Maesod,12/20/10,1154,PD0715-C,NA,10.1038/s41467-018-04965-4,NA
+ERR773745,NA,Thailand,Tak Province,Maesod,3/21/11,1154,PD1519-C,NA,10.1038/s41467-018-04965-4,NA
+ERR773746,NA,Thailand,Tak Province,Maesod,1/31/11,1154,PD1520-C,NA,10.1038/s41467-018-04965-4,NA
+ERR773747,NA,Thailand,Tak Province,Maesod,7/14/11,1154,PD1521-C,NA,10.1038/s41467-018-04965-4,NA
+ERR773748,NA,Thailand,Tak Province,Phopphra,5/5/11,1154,PD1522-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475350,NA,Thailand,Tak Province,Maesod,10/6/13,1154,PD1526-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475351,NA,Thailand,Tak Province,Uncertain,6/1/03,1154,PD1529-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475352,NA,Thailand,Tak Province,Uncertain,6/1/03,1154,PD1530-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475353,NA,Thailand,Tak Province,Uncertain,8/31/03,1154,PD1531-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475354,NA,Thailand,Tak Province,Uncertain,8/31/03,1154,PD1532-C,NA,10.1038/s41467-018-04965-4,NA
+ERR1475355,NA,Thailand,Tak Province,Uncertain,8/31/03,1154,PD1534-C,NA,10.1038/s41467-018-04965-4,NA
+ERR034096,NA,Indonesia (returning traveller),Papua Province,Uncertain,10/12/10,1157,PJ0004-C,NA,10.1038/s41467-018-04965-4,NA
+ERR054084,NA,Indonesia (returning traveller),Papua Province,Uncertain,3/8/11,1157,PJ0006-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337624,NA,Indonesia (returning traveller),Papua Province,Uncertain,8/3/12,1157,PJ0007-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337627,NA,Indonesia (returning traveller),Papua Province,Uncertain,2/6/13,1157,PJ0008-C,NA,10.1038/s41467-018-04965-4,NA
+ERR337630,NA,Indonesia (returning traveller),Papua Province,Uncertain,2/21/13,1157,PJ0009-C,NA,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,3/15/11,1154,PJ0012-Cx,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,4/4/11,1154,PJ0016-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,5/11/11,1154,PJ0018-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,5/12/11,1154,PJ0019-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,5/30/11,1154,PJ0021-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,5/31/11,1154,PJ0022-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,6/17/11,1154,PJ0024-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,6/28/11,1154,PJ0025-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,7/4/11,1154,PJ0026-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,7/14/11,1154,PJ0030-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,7/25/11,1154,PJ0032-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,8/19/11,1154,PJ0033-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,8/19/11,1154,PJ0034-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,8/22/11,1154,PJ0035-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,9/5/11,1154,PJ0036-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,9/6/11,1154,PJ0037-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,9/26/11,1154,PJ0038-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,9/30/11,1154,PJ0038-Cx,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/5/11,1154,PJ0041-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/13/11,1154,PJ0042-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/16/11,1154,PJ0043-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,11/15/11,1154,PJ0048-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,11/21/11,1154,PJ0049-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,12/14/11,1154,PJ0056-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,3/22/12,1154,PJ0062-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,5/1/12,1154,PJ0067-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,5/8/12,1154,PJ0068-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,5/10/12,1154,PJ0069-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,7/11/12,1154,PJ0072-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,7/26/12,1154,PJ0075-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,8/13/12,1154,PJ0078-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,9/21/12,1154,PJ0082-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/23/12,1154,PJ0084-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/23/12,1154,PJ0085-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/26/12,1154,PJ0086-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/31/12,1154,PJ0087-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/14/11,1154,PJ0088-Cx,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/14/11,1154,PJ0089-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/17/11,1154,PJ0090-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,11/30/11,1154,PJ0093-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/1/12,1154,PJ0097-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,12/30/12,1154,PJ0099-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,12/4/12,1154,PJ0100-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,12/11/12,1154,PJ0106-Cx,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,1/7/13,1154,PJ0112-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,1/9/13,1154,PJ0113-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,1/25/13,1154,PJ0117-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/6/13,1154,PJ0122-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/6/13,1154,PJ0123-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/11/13,1154,PJ0125-CW,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/21/13,1154,PJ0128-C,no_accession,10.1038/s41467-018-04965-4,NA
+ERR527373,NA,Indonesia (returning traveller),Papua Province,Uncertain,11/15/13,1157,PJ0167-C,NA,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/17/11,1154,PJ0273-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/26/11,1154,PJ0274-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/27/11,1154,PJ0275-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,11/24/11,1154,PJ0276-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,12/6/11,1154,PJ0277-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,12/6/11,1154,PJ0278-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,12/10/11,1154,PJ0279-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,12/13/11,1154,PJ0280-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/5/12,1154,PJ0281-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/16/12,1154,PJ0282-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,3/29/12,1154,PJ0283-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,4/4/12,1154,PJ0284-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,4/18/12,1154,PJ0285-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,5/16/12,1154,PJ0286-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,6/21/12,1154,PJ0287-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,7/20/12,1154,PJ0288-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,8/31/12,1154,PJ0289-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/3/12,1154,PJ0290-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/15/13,1154,PJ0291-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,3/27/13,1154,PJ0293-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,5/29/13,1154,PJ0294-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,6/18/13,1154,PJ0295-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,7/30/13,1154,PJ0296-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,9/9/13,1154,PJ0297-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,11/7/13,1154,PJ0298-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,11/25/13,1154,PJ0299-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,12/11/13,1154,PJ0300-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/26/14,1154,PJ0301-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,3/4/14,1154,PJ0302-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,3/6/14,1154,PJ0303-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,7/2/14,1154,PJ0305-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,8/6/14,1154,PJ0307-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,8/26/14,1154,PJ0309-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/8/13,1154,PJ0310-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,10/19/11,1154,PJ0312-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/5/12,1154,PJ0313-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,4/2/13,1154,PJ0314-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,5/18/13,1154,PJ0315-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,6/11/13,1154,PJ0316-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,8/26/13,1154,PJ0317-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,1/18/13,1154,PJ0318-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/20/14,1154,PJ0319-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,3/18/14,1154,PJ0320-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,8/5/14,1154,PJ0322-C,no_accession,10.1038/s41467-018-04965-4,NA
+NA,NA,Indonesia,Papua Province,Mimika Regency,2/13/14,1154,PJ0323-C,no_accession,10.1038/s41467-018-04965-4,NA
+ERR925443,NA,Indonesia (returning traveller),Papua Province,Uncertain,10/29/14,1157,PJ0324-C,NA,10.1038/s41467-018-04965-4,NA

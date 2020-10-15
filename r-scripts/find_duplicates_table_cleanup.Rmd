@@ -1,0 +1,107 @@
+---
+title: "Find_Duplicates"
+author: "Valerie Gartner"
+date: "10/6/2020"
+output: html_document
+---
+
+NOTE: NEXT TIME I NEED TO DO THIS, JUST USE THE FUNCTION distinct() !!!!!!!
+https://www.datanovia.com/en/lessons/identify-and-remove-duplicate-data-in-r/
+
+
+
+```{r}
+suppressMessages(library(dplyr))
+suppressMessages(library(tidyverse))
+```
+
+```{r}
+sample_table <- as.data.frame(read.csv('~/Dropbox (Duke Bio_Ea)/coalescent/samples/tables/merged-sample-table.csv', na.strings=c("", "NA")))
+
+#full table
+#sample_table
+
+#duplicate accession numbers
+dups <- sample_table[duplicated(sample_table$accession),]
+
+setwd('~/Dropbox (Duke Bio_Ea)/scripts/r-scripts/')
+write.table(dups, "duplicate_accessions.txt", sep=",",col.names=TRUE,row.names=FALSE,quote=FALSE)
+```
+
+
+Look at the full table and see if there are any duplicates by sample_ID field		
+```{r}
+#pull out only samples with a sample ID
+samp_ID <- dups %>% drop_na(sample_ID)
+#samp_ID
+
+#duplicate accession numbers
+dup_sampID <- samp_ID[duplicated(samp_ID$sample_ID),]
+#dup_sampID #no duplicates
+
+
+smpdups <- sample_table[duplicated(sample_table$sample_ID),] %>% drop_na(sample_ID)
+smpdups
+
+
+```
+
+It appears there are some duplicate sample IDs...?
+
+Why are some sample IDs from the same study listed with different accession numbers?
+e.g.
+ERS403525		Malaysia	1157	PY0019-C #ERS is the sample number
+ERR527363		Malaysia	1157	PY0019-C
+
+
+Can I delete all samples that start with ERS because they're already present in the database in ERR form?
+```{r}
+#split samp_Id into two dataframes - one with only ERS and the other withonly ERR
+#library(stringr)
+#couldn't figure out how to do this in R. gonna export and do in python.
+
+
+samp_acc <- select(samp_ID, "accession", "sample_ID")
+#samp_acc
+#use sample_IDs as the key to pull out all rows that match the sample ID
+
+#duped_sampID <- sample_table[sample_table$sample_ID %in% samp_acc$sample_ID]
+duped_sampID <- filter(sample_table, sample_ID %in% samp_acc$sample_ID)
+duped_sampID <- select(duped_sampID, "accession", "sample_ID")
+#https://stackoverflow.com/questions/11612235/select-rows-from-a-data-frame-based-on-values-in-a-vector
+# "try: dt[dt$fct %in% vc,] Basically == is for one item and %in% is for a vector comparison."
+
+#setwd('~/Dropbox (Duke Bio_Ea)/coalescent/samples/tables/')
+#write.table(duped_sampID, "sample_ID_accessions.csv", sep=",",col.names=FALSE,row.names=FALSE,quote=FALSE)
+# ended up doing this bit in python ~/scripts/python/split-sampleIDs-compare.py
+# output of that script is imported in the next chunk
+
+```
+
+```{r}
+ers_to_delete <- as.data.frame(read.csv('~/Dropbox (Duke Bio_Ea)/scripts/python-scripts/ERS-to-delete.txt'))
+#ers_to_delete
+
+
+#remove samples beginning with ERS
+final_table_noers <- filter(sample_table, !accession %in% ers_to_delete$x)
+#final_table[order(final_table$accession),]
+                      
+                
+#final_table_noers
+final_table_distinct <- distinct(final_table_noers, accession, .keep_all=TRUE) # I should have used this function the whole time -_-
+#final_table_sorted
+#final_table_sorted[order(final_table_sorted$country),]
+
+setwd('~/Dropbox (Duke Bio_Ea)/coalescent/samples/tables/')
+write.table(final_table_distinct, "merged-sample-table-noduplicates.csv", sep=",",col.names=TRUE,row.names=FALSE,quote=FALSE)
+write.table(final_table_distinct$accession, "accesions-merged-sample-table-noduplicates.txt", col.names=FALSE,row.names=FALSE,quote=FALSE)
+```
+
+
+```{r}
+test <- data.frame(c('scooby', 'dooby', 'dooby', 'do', 'where', 'are', 'you'), c(1, 2, 3, 4, 5, 6, 7))
+test
+test <- test %>% distinct(c..scooby....dooby....dooby....do....where....are....you.., .keep_all = TRUE)
+test
+```

@@ -9,7 +9,7 @@ output: html_document
 library(dplyr)
 ```
 
-```{r}s
+```{r}
 
 #read in files as data frames
 fastq <- as.data.frame(read.csv('~/Desktop/fastq-files.csv')) #all unprocessed data
