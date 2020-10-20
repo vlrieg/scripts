@@ -78,6 +78,9 @@ duped_sampID <- select(duped_sampID, "accession", "sample_ID")
 
 ```
 
+ended up doing this bit in python ~/scripts/python/split-sampleIDs-compare.py
+output of that script is imported in the next chunk
+
 ```{r}
 ers_to_delete <- as.data.frame(read.csv('~/Dropbox (Duke Bio_Ea)/scripts/python-scripts/ERS-to-delete.txt'))
 #ers_to_delete
@@ -90,8 +93,10 @@ final_table_noers <- filter(sample_table, !accession %in% ers_to_delete$x)
                 
 #final_table_noers
 final_table_distinct <- distinct(final_table_noers, accession, .keep_all=TRUE) # I should have used this function the whole time -_-
-#final_table_sorted
-#final_table_sorted[order(final_table_sorted$country),]
+#final_table_distinct
+#final_table_distinct[order(final_table_distinct$country),]
+
+final_table_distinct <- drop_na(final_table_distinct, accession)
 
 setwd('~/Dropbox (Duke Bio_Ea)/coalescent/samples/tables/')
 write.table(final_table_distinct, "merged-sample-table-noduplicates.csv", sep=",",col.names=TRUE,row.names=FALSE,quote=FALSE)

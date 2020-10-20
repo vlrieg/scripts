@@ -1,0 +1,32 @@
+---
+title: "SRR_cleanup"
+author: "Valerie Gartner"
+date: "10/20/2020"
+output: html_document
+---
+
+```{r}
+suppressMessages(library(dplyr))
+suppressMessages(library(tidyverse))
+```
+
+```{r}
+xfer_list <- as.data.frame(read.csv("/Users/vgartner/Desktop/2020.10.20-SRR-organization/xfer-SRR.csv")) #284 cols
+hardac_dirs <- as.data.frame(read.csv("/Users/vgartner/Desktop/2020.10.20-SRR-organization/hardac-SRR-dirs.csv")) #313 cols #29 cols diff
+
+xfer_list
+hardac_dirs
+
+```
+
+
+find the 29 unique accessions and write to file
+```{r}
+
+unique_list <- filter(hardac_dirs, !acc %in% xfer_list$acc)
+unique_list
+
+setwd('/Users/vgartner/Desktop/2020.10.20-SRR-organization/')
+write.table(unique_list, "29-samps-to-scp.txt", sep="",col.names=FALSE,row.names=FALSE,quote=FALSE)
+
+```
