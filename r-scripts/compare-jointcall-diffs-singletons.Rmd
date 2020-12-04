@@ -11,9 +11,9 @@ comparing two different joint call conditions.
 
 ```{r message=FALSE}
 library(tidyverse)
-library(VennDiagram)
-
 ```
+
+
 
 
 ### Read in the data. 
@@ -29,6 +29,11 @@ Note that this data includes "doubletons" as well as singletons, but because P. 
 setwd("/home/vgartner/wray-lab/joint-call/singletons/")
 by_pop_singletons <- as.data.frame(read.csv("by-pop-chroms-snps-only.tsv", sep = "\t"))
 combined_singletons <- as.data.frame(read.csv("combined-chroms-snps-only.tsv", sep = "\t"))
+
+names(by_pop_singletons)[5] <- "acc"
+names(combined_singletons)[5] <- "acc"
+#combined_singletons
+
 ```
 
 add location info for plotting
@@ -49,7 +54,7 @@ names(cam_df)[2] <- "location"
 
 
 loc_df <- rbind(eth_df, cam_df)
-loc_df
+#loc_df
 ```
 
 
@@ -66,9 +71,10 @@ total_count <- data.frame(condition = c("by-population", "combined"), total = c(
 total_count_plot <- ggplot(total_count, aes(x=factor(condition), y=total, fill=condition)) +
   geom_bar(stat="identity") +
   theme(legend.position = "none") + 
-  geom_text(aes(label=total), position=position_dodge(width=0.9), check_overlap = TRUE, vjust = -.3, size = 4)
-total_count_plot + 
+  geom_text(aes(label=total), position=position_dodge(width=0.9), check_overlap = TRUE, vjust = -.3, size = 4) + 
   labs(x = "Joint Calling Condition", y = "Number of singletons", title = "Number of singletons per condition")
+
+total_count_plot 
 ```
 
 
@@ -80,7 +86,7 @@ total_count_plot +
 
 #### Number of sigletons per individual in each condition
 ```{r}
-by_pop_sing_per_indv <- count(by_pop_singletons, INDV)
+by_pop_sing_per_indv <- count(by_pop_singletons, acc)
 # double check
 #sum(by_pop_sing_per_indv$n) == nrow(by_pop_singletons)
 names(by_pop_sing_per_indv)[1] <- "acc"
@@ -97,18 +103,17 @@ bp_sing_indv_plot <- ggplot(as.data.frame(by_pop_sing_per_indv), aes(x=factor(ac
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  +
   labs(x = "Sample Accession", y = "Number of singletons", title = "Number of singletons per individual in 'By-Population' condition") + 
   scale_color_manual(values = colors, breaks = names(colors)[c(2,1)]) + 
-  geom_text(aes(label=n), position=position_dodge(width=0.9), check_overlap = TRUE, vjust = -.3, size = 3)
+  geom_text(aes(label=n), position=position_dodge(width=0.9), vjust = -.3, size = 3)
 
 bp_sing_indv_plot
 
 
+########
 
 
-
-combined_sing_per_indv <- count(combined_singletons, INDV)
+combined_sing_per_indv <- count(combined_singletons, acc)
 # double check
 #sum(combined_sing_per_indv$n) == nrow(combined_singletons)
-names(combined_sing_per_indv)[1] <- "acc"
 combined_sing_per_indv <- inner_join(combined_sing_per_indv, loc_df, by="acc")
 #combined_sing_per_indv
 
@@ -118,8 +123,96 @@ comb_sing_indv_plot <- ggplot(as.data.frame(combined_sing_per_indv), aes(x=facto
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  +
   labs(x = "Sample Accession", y = "Number of singletons", title = "Number of singletons per individual in 'Combined' condition") + 
   scale_color_manual(values = colors, breaks = names(colors)[c(2,1)])+
-  geom_text(aes(label=n), position=position_dodge(width=0.9), check_overlap = TRUE, vjust = -.3, size = 3)
+  geom_text(aes(label=n), position=position_dodge(width=0.9), vjust = -.3, size = 3)
 
 comb_sing_indv_plot
+
+```
+
+### Apicoplast Singletons
+```{r}
+#pull out rows that come from the apicoplast
+by_pop_api <- filter(by_pop_singletons, CHROM == "LT635626")
+combined_api <- filter(combined_singletons, CHROM == "LT635626")
+#by_pop_api
+
+bp_api_count <- nrow(by_pop_api)
+c_api_count <- nrow(combined_api)
+
+api_total_count <- data.frame(condition = c("by-pop", "combined"), total = c(bp_api_count, c_api_count))
+
+
+api_total_count_plot <- ggplot(api_total_count, aes(x=factor(condition), y=total, fill=condition)) +
+  geom_bar(stat="identity") +
+  theme(legend.position = "none") + 
+  geom_text(aes(label=total), position=position_dodge(width=0.9), check_overlap = TRUE, vjust = -.3, size = 4) + 
+  labs(x = "Joint Calling Condition", y = "Number of singletons", title = "Number of Apicoplast singletons per condition")
+
+api_total_count_plot
+
+```
+
+
+
+
+### Singleton position along each chromosome
+
+https://www.biostars.org/p/18954/#63727
+```{r}
+common_singletons <- inner_join(by_pop_singletons, combined_singletons, by=c("CHROM", "POS"))
+
+#new dataframe with condition as a column
+by_pop_singletons$condition = c(rep("By Population", length(nrow(by_pop_singletons))))
+#by_pop_singletons  
+
+combined_singletons$condition = c(rep("Combined", length(nrow(combined_singletons))))
+#combined_singletons
+
+joined_singletons <- rbind(by_pop_singletons, combined_singletons)
+
+# making sure I have what I want
+#test <- joined_singletons %>% filter(condition == "Combined")
+#test2 <- joined_singletons %>% filter(condition == "By Population")
+#nrow(test) + nrow(test2) == nrow(joined_singletons)
+
+
+
+# plot nuclear chroms separate from organelle (very diff bin widths needed)
+
+#nuclear
+
+nuclear_singletons <- filter(joined_singletons, CHROM != "LT635626" & CHROM != "LT635627")
+#make sure only nuclear chroms are in new df
+#nuclear_singletons_count <- count(nuclear_singletons, CHROM)
+#nuclear_singletons_count
+
+nuc_snp_density_plot <- ggplot(nuclear_singletons) + 
+  geom_histogram(aes(x=POS, fill=condition), binwidth = 10000) +
+  facet_wrap( ~ CHROM, ncol = 2, scales = "free") + 
+  labs(x = "Position along chromosome", y = "Number of Singletons", title = "Singleton density along nuclear chromosomes per joint calling condition")
+nuc_snp_density_plot
+
+pdf("snp_density_per_chrom_nuclear.pdf")
+print(nuc_snp_density_plot)
+dev.off()
+
+#organelle
+
+organelle_singletons <- filter(joined_singletons, CHROM == "LT635626" | CHROM == "LT635627")
+
+#make sure only organelle chroms are in new df
+#organelle_singletons_count <- count(organelle_singletons, CHROM)
+#organelle_singletons_count
+
+org_snp_density_plot <- ggplot(organelle_singletons) +
+  geom_histogram(aes(x=POS, fill=condition), binwidth = 30) +
+  facet_wrap( ~ CHROM, ncol = 1, scales = "free") + 
+  labs(x = "Position along chromosome", y = "Number of singletons", title = "Singleton density along organelle genomes per joint calling condition")
+org_snp_density_plot
+
+pdf("snp_density_per_chrom_organelle.pdf")
+print(org_snp_density_plot)
+dev.off()
+
 
 ```
