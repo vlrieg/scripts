@@ -91,7 +91,7 @@ with open(singfile, mode='r') as singleton_file:
 out_file = 'trimmed-' + singfile
 
 with open(out_file, 'w') as out_file:
-    out_writer = csv.writer(out_file, delimiter=",", quotechar = "'", quoting = csv.QUOTE_MINIMAL)
+    out_writer = csv.writer(out_file, delimiter=",")
 
     for lineno, obs_list in keep_dict.items():
-        out_writer.writerow(",".join(obs_list))
+        out_writer.writerow(obs_list)
