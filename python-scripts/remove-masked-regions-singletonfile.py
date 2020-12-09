@@ -56,7 +56,7 @@ with open(singfile, mode='r') as singleton_file:
             keep_count += 1
             continue #skip to next iteration
         else:
-            for mask_chrom in masks_for_chrom.keys(): #loop through mask table 
+            for mask_chrom in masks_for_chrom.keys(): #loop through mask table (check every position of singleton file against each masked region)
                 chrom = sing_obs[0]
                 loc = int(sing_obs[1])
                 sing_doub = sing_obs[2]
@@ -71,11 +71,11 @@ with open(singfile, mode='r') as singleton_file:
                         pass
                 elif chrom not in masks_for_chrom:  # don't crash if there are not masks for chrom
                     continue 
-                    # not 100% sure I need this elif statement if I'm accounting for both unmasked organelle chroms above 
+                    # not sure I need this elif statement if I'm accounting for both unmasked organelle chroms above 
                     # but I'm gonna leave it in just in case
                 else:
-                    for start,end in masks_for_chrom[chrom]: #loop through mask table
-                        if start < loc and loc < end:
+                    for start,end in masks_for_chrom[chrom]:
+                        if loc < start or end < loc: #only want to keep position if not within masked region
                             if keep_obs_list not in keep_dict.values(): #only record the observation once
                                 keep_dict[keep_count] = keep_obs_list
                                 keep_count += 1
