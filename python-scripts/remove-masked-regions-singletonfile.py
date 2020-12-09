@@ -27,12 +27,10 @@ from collections import defaultdict
 maskfile = sys.argv[1]
 singfile = sys.argv[2]
 
-#Ben's code
 masks_for_chrom = {}
 with open(maskfile, mode='r') as mask_file:
     mask_table = csv.DictReader(mask_file, delimiter = ',')
     for row in mask_table:
-       #print(row)
         chrom = row['chr']
         start = int(row['exclude_start'])
         end   = int(row['exclude_end'])
@@ -40,20 +38,15 @@ with open(maskfile, mode='r') as mask_file:
             masks_for_chrom[chrom] = []
         masks_for_chrom[chrom].append([start,end])
 
-# for key,val in masks_for_chrom.items():
-#     print(key,val)
-
-
-
 
 keep_dict = defaultdict(str)
 keep_count = 0
 header_list = ['CHROM', 'POS', 'SINGLETON/DOUBLETON', 'ALLELE', 'INDV']
 
-#progress_count = 0
 
 # Read singleton file into a list and then compare to mask table
 # only keep lines that don't fall within masked regions
+# also keep all lines that are from apicoplast and mitochondria
 with open(singfile, mode='r') as singleton_file:
     singleton_table = csv.reader(singleton_file, delimiter = '\t', quotechar='|')
     
@@ -63,15 +56,16 @@ with open(singfile, mode='r') as singleton_file:
             keep_count += 1
             continue #skip to next iteration
         else:
-            #progress_count += 1
-            #print(f'loop number: {progress_count}')
             for mask_chrom in masks_for_chrom.keys(): #loop through mask table 
                 chrom = sing_obs[0]
                 loc = int(sing_obs[1])
                 sing_doub = sing_obs[2]
                 the_allele = sing_obs[3]
                 indv = sing_obs[4]
-                if chrom not in masks_for_chrom:  # don't crash if there are not masks for chrom
+                if chrom == 'LT635626' or  chrom == 'LT635627': #keep all apicoplast and mitochondrial observations
+                    keep_dict[keep_count] = keep_obs_list
+                    keep_count += 1
+                elif chrom not in masks_for_chrom:  # don't crash if there are not masks for chrom
                     continue 
                 else:
                     for start,end in masks_for_chrom[chrom]: #loop through mask table
@@ -80,15 +74,13 @@ with open(singfile, mode='r') as singleton_file:
                             if keep_obs_list not in keep_dict.values():
                                 keep_dict[keep_count] = keep_obs_list
                                 keep_count += 1
-
-                                #print(keep_obs_list)
                             else:
                                 pass
                         else:
                             pass
                 
 
-out_file = 'trimmed-' + singfile
+out_file = 'trimmed-' + singfile + '.csv'
 
 with open(out_file, 'w') as out_file:
     out_writer = csv.writer(out_file, delimiter=",")

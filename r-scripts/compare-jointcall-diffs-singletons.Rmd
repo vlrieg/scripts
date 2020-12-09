@@ -27,8 +27,14 @@ Note that this data includes "doubletons" as well as singletons, but because P. 
 
 ```{r}
 setwd("/home/vgartner/wray-lab/joint-call/singletons/")
-by_pop_singletons <- as.data.frame(read.csv("by-pop-chroms-snps-only.tsv", sep = "\t"))
-combined_singletons <- as.data.frame(read.csv("combined-chroms-snps-only.tsv", sep = "\t"))
+
+#original data files - masked regiosn not removed
+#by_pop_singletons <- as.data.frame(read.csv("by-pop-chroms-snps-only.tsv", sep = "\t"))
+#combined_singletons <- as.data.frame(read.csv("combined-chroms-snps-only.tsv", sep = "\t"))
+
+#trimmed data files - telomeres & repetitive regions removed
+by_pop_singletons <- as.data.frame(read.csv("trimmed-by-pop-chroms-snps-only.singletons.csv", sep = ","))
+combined_singletons <- as.data.frame(read.csv("trimmed-combined-chroms-snps-only.singletons.csv", sep = ","))
 
 names(by_pop_singletons)[5] <- "acc"
 names(combined_singletons)[5] <- "acc"
@@ -36,7 +42,7 @@ names(combined_singletons)[5] <- "acc"
 
 ```
 
-add location info for plotting
+#### Add location info for plotting
 ```{r}
 ethiopia_acc <- c("ERR2678989", "ERR2678996", "ERR2678998", "ERR2679003", "ERR775189", "ERR775190", "ERR925409", "ERR925410", "ERR925431", "ERR925440") 
 cambodia_acc <- c("SRR2315729", "SRR2315958", "SRR2316038", "SRR2316105", "SRR2316531", "SRR2316875", "SRR6361608", "SRR6361755", "SRR6361801", "SRR6361805")
@@ -159,6 +165,8 @@ api_total_count_plot
 
 https://www.biostars.org/p/18954/#63727
 ```{r}
+setwd("/home/vgartner/wray-lab/joint-call/singletons/")
+
 common_singletons <- inner_join(by_pop_singletons, combined_singletons, by=c("CHROM", "POS"))
 
 #new dataframe with condition as a column
