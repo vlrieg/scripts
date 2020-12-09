@@ -62,6 +62,7 @@ with open(singfile, mode='r') as singleton_file:
                 sing_doub = sing_obs[2]
                 the_allele = sing_obs[3]
                 indv = sing_obs[4]
+                keep_obs_list = [chrom, str(loc), sing_doub, the_allele, indv] #keep entire row/observation
                 if chrom == 'LT635626' or  chrom == 'LT635627': #keep all apicoplast and mitochondrial observations
                     keep_dict[keep_count] = keep_obs_list
                     keep_count += 1
@@ -70,7 +71,6 @@ with open(singfile, mode='r') as singleton_file:
                 else:
                     for start,end in masks_for_chrom[chrom]: #loop through mask table
                         if start < loc and loc < end:
-                            keep_obs_list = [chrom, str(loc), sing_doub, the_allele, indv] #keep entire row/observation
                             if keep_obs_list not in keep_dict.values():
                                 keep_dict[keep_count] = keep_obs_list
                                 keep_count += 1
