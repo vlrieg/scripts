@@ -63,7 +63,7 @@ with open(singfile, mode='r') as singleton_file:
                 the_allele = sing_obs[3]
                 indv = sing_obs[4]
                 keep_obs_list = [chrom, str(loc), sing_doub, the_allele, indv] #keep entire row/observation
-                if chrom == 'LT635626' or  chrom == 'LT635627': #keep all apicoplast and mitochondrial observations
+                if chrom == 'LT635626' or  chrom == 'LT635627' or chrom == 'LT635621': #keep all apicoplast, mitochondrial, and chrom LT635627 observations
                     if keep_obs_list not in keep_dict.values(): #only record the observation once
                         keep_dict[keep_count] = keep_obs_list
                         keep_count += 1
