@@ -29,8 +29,8 @@ Note that this data includes "doubletons" as well as singletons, but because P. 
 setwd("/home/vgartner/wray-lab/joint-call/singletons/")
 
 #original data files - masked regiosn not removed
-#by_pop_singletons <- as.data.frame(read.csv("by-pop-chroms-snps-only.tsv", sep = "\t"))
-#combined_singletons <- as.data.frame(read.csv("combined-chroms-snps-only.tsv", sep = "\t"))
+#by_pop_singletons <- as.data.frame(read.csv("by-pop-chroms-snps-only.singletons", sep = "\t"))
+#combined_singletons <- as.data.frame(read.csv("combined-chroms-snps-only.singletons", sep = "\t"))
 
 #trimmed data files - telomeres & repetitive regions removed
 by_pop_singletons <- as.data.frame(read.csv("trimmed-by-pop-chroms-snps-only.singletons.csv", sep = ","))
@@ -218,9 +218,9 @@ org_snp_density_plot <- ggplot(organelle_singletons) +
   labs(x = "Position along chromosome", y = "Number of singletons", title = "Singleton density along organelle genomes per joint calling condition")
 org_snp_density_plot
 
-pdf("snp_density_per_chrom_organelle.pdf")
-print(org_snp_density_plot)
-dev.off()
+#pdf("snp_density_per_chrom_organelle.pdf")
+#print(org_snp_density_plot)
+#dev.off()
 
 
 ```
