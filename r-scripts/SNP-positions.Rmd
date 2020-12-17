@@ -1,0 +1,10 @@
+---
+title: "SNPs along chromosomes"
+output: html_document
+---
+
+
+```{r message=FALSE}
+library(tidyverse)
+library(svglite)
+```
