@@ -1,0 +1,59 @@
+---
+title: "Unique & Shared SNPs"
+output: html_document
+---
+
+```{r message=FALSE}
+library(tidyverse)
+library(VariantAnnotation)
+```
+
+
+### Singletons
+
+Data was generated using the command:
+
+> vcftools --gzvcf file.g.vcf.gz --singletons
+
+Note that this data includes "doubletons" as well as singletons, but because P. vivax is haploid, lines with "doubletons" here should still be included in analyses:
+"The file reports both true singletons, and private doubletons (i.e. SNPs where the minor allele only occurs in a single individual and that individual is homozygotic for that allele)." http://vcftools.sourceforge.net/man_latest.html
+
+```{r}
+setwd("/home/vgartner/wray-lab/joint-call/singletons/")
+
+by_pop_singletons <- as.data.frame(read.csv("by-pop-chroms-snps-only.singletons", sep = "\t"))
+combined_singletons <- as.data.frame(read.csv("combined-chroms-snps-only.singletons", sep = "\t"))
+
+names(by_pop_singletons)[5] <- "acc"
+names(combined_singletons)[5] <- "acc"
+
+```
+
+### Singletons unique to each dataset
+```{r}
+unique_to_bp <- setdiff(by_pop_singletons, combined_singletons)
+unique_to_bp
+
+unique_to_com <- setdiff(combined_singletons, by_pop_singletons)
+unique_to_com
+```
+
+
+
+### A lot of the singletons unique to the combined called condition seem to be asterisks (*). How many unique singletons in each condition are asterisks (or stars)?
+
+Note: Asterisks denote overlapping deletions
+https://gatk.broadinstitute.org/hc/en-us/articles/360035531912-Spanning-or-overlapping-deletions-allele-
+
+```{r}
+unique_to_bp$star <- str_count(unique_to_bp$ALLELE, "\\*")
+total_unique_to_bp_stars <- sum(unique_to_bp$star)
+total_unique_to_bp_stars # = 0 out of 7627 unique singletons
+
+
+unique_to_com$star <- str_count(unique_to_com$ALLELE, "\\*")
+total_unique_to_com_stars <- sum(unique_to_com$star)
+total_unique_to_com_stars # = 11612 out of 12683 unique singletons
+
+
+```
