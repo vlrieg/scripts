@@ -34,7 +34,7 @@ names(combined_singletons)[5] <- "acc"
 
 
 #untrimmed_by_pop_singletons
-#by_pop_singletons
+by_pop_singletons$ALLELE == "*"
 #untrimmed_combined_singletons
 #combined_singletons
 ```
@@ -142,7 +142,7 @@ org_snp_density_plot <- ggplot(nuclear_only) +
 star_density_plot <- ggplot(nuclear_stars) + 
   geom_histogram(aes(x=POS, fill=trim), position="dodge") +
   facet_wrap( ~ CHROM, ncol = 2, scales = "free") + 
-  labs(x = "Position along chromosom", y = "number of singletons that are stars", title = "combined condition: singletons that are stars (trimmed vs untrimmed)")
+  labs(x = "Position along chromosome", y = "number of singletons that are stars", title = "combined condition: singletons that are stars (trimmed vs untrimmed)")
 star_density_plot
 
 setwd("/home/vgartner/wray-lab/joint-call/singletons/")

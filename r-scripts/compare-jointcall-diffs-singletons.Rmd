@@ -109,7 +109,8 @@ bp_sing_indv_plot <- ggplot(as.data.frame(by_pop_sing_per_indv), aes(x=factor(ac
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  +
   labs(x = "Sample Accession", y = "Number of singletons", title = "Number of singletons per individual in 'By-Population' condition") + 
   scale_color_manual(values = colors, breaks = names(colors)[c(2,1)]) + 
-  geom_text(aes(label=n), position=position_dodge(width=0.9), vjust = -.3, size = 3)
+  geom_text(aes(label=n), position=position_dodge(width=0.9), vjust = -.3, size = 3) + 
+  scale_fill_manual("legend", values = c("Ethiopia" = "black", "Cambodia" = "gray"))
 
 bp_sing_indv_plot
 
@@ -129,7 +130,8 @@ comb_sing_indv_plot <- ggplot(as.data.frame(combined_sing_per_indv), aes(x=facto
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  +
   labs(x = "Sample Accession", y = "Number of singletons", title = "Number of singletons per individual in 'Combined' condition") + 
   scale_color_manual(values = colors, breaks = names(colors)[c(2,1)])+
-  geom_text(aes(label=n), position=position_dodge(width=0.9), vjust = -.3, size = 3)
+  geom_text(aes(label=n), position=position_dodge(width=0.9), vjust = -.3, size = 3) + 
+  scale_fill_manual("legend", values = c("Ethiopia" = "black", "Cambodia" = "gray"))
 
 comb_sing_indv_plot
 
@@ -141,6 +143,13 @@ comb_sing_indv_plot
 by_pop_api <- filter(by_pop_singletons, CHROM == "LT635626")
 combined_api <- filter(combined_singletons, CHROM == "LT635626")
 #by_pop_api
+
+#which snp is missing from combined condition?
+bp_unique_api <- setdiff(by_pop_api, combined_api)
+bp_unique_api
+
+com_unique_api <- setdiff(combined_api, by_pop_api)
+com_unique_api
 
 bp_api_count <- nrow(by_pop_api)
 c_api_count <- nrow(combined_api)
@@ -164,7 +173,7 @@ api_total_count_plot
 ### Singleton position along each chromosome
 
 https://www.biostars.org/p/18954/#63727
-```{r}
+```{r fig.height=14, fig.width=12}
 setwd("/home/vgartner/wray-lab/joint-call/singletons/")
 
 common_singletons <- inner_join(by_pop_singletons, combined_singletons, by=c("CHROM", "POS"))
@@ -193,15 +202,18 @@ nuclear_singletons <- filter(joined_singletons, CHROM != "LT635626" & CHROM != "
 #make sure only nuclear chroms are in new df
 #nuclear_singletons_count <- count(nuclear_singletons, CHROM)
 #nuclear_singletons_count
+#nuclear_singletons
+#nuclear_singletons_star <- nuclear_singletons$ALLELE == "*" && nuclear_singletons$condition == "Combined"
+#nuclear_singletons_star
 
-nuc_snp_density_plot <- ggplot(nuclear_singletons) + 
-  geom_histogram(aes(x=POS, fill=condition), binwidth = 10000) +
+nuc_sing_density_plot <- ggplot(nuclear_singletons) + 
+  geom_histogram(aes(x=POS, fill=condition), binwidth = 10000, position="dodge") +
   facet_wrap( ~ CHROM, ncol = 2, scales = "free") + 
   labs(x = "Position along chromosome", y = "Number of Singletons", title = "Singleton density along nuclear chromosomes per joint calling condition")
-nuc_snp_density_plot
+nuc_sing_density_plot
 
-pdf("snp_density_per_chrom_nuclear.pdf")
-print(nuc_snp_density_plot)
+pdf("singleton_density_per_chrom_nuclear.pdf")
+print(nuc_sing_density_plot)
 dev.off()
 
 #organelle
@@ -213,10 +225,10 @@ organelle_singletons <- filter(joined_singletons, CHROM == "LT635626" | CHROM ==
 #organelle_singletons_count
 
 org_snp_density_plot <- ggplot(organelle_singletons) +
-  geom_histogram(aes(x=POS, fill=condition), binwidth = 30) +
+  geom_histogram(aes(x=POS, fill=condition), binwidth = 30, position="dodge") +
   facet_wrap( ~ CHROM, ncol = 1, scales = "free") + 
   labs(x = "Position along chromosome", y = "Number of singletons", title = "Singleton density along organelle genomes per joint calling condition")
-org_snp_density_plot
+#org_snp_density_plot
 
 #pdf("snp_density_per_chrom_organelle.pdf")
 #print(org_snp_density_plot)

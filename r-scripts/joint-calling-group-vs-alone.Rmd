@@ -1,0 +1,24 @@
+---
+title: "alone vs group joint calling"
+output: html_document
+---
+
+
+```{r message=FALSE}
+library(tidyverse)
+library(svglite)
+```
+
+```{r}
+setwd("/home/vgartner/wray-lab/joint-call/data/single-vs-group-jc")
+
+single_jc <- as.data.frame(read.csv("cambodia-1-chroms.singletons", sep = "\t"))
+group_jc <- as.data.frame(read.csv("cambodia-10-chroms.singletons", sep = "\t"))
+```
+
+
+```{r}
+unique_to_group <- setdiff(group_jc, single_jc)
+unique_to_group
+
+```

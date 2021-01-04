@@ -8,19 +8,38 @@ output: html_document
 ```{r}
 library(dplyr)
 ```
+
 ```{r}
-all_data <- read.csv("Dropbox (Duke Bio_Ea)/coalescent/samples/sample_info.csv", header = TRUE)
+
+sample_table <- read.csv("../../coalescent/samples/tables/merged-sample-table-noduplicates.csv")
+
+unique((sample_table$region))
+#seasia   samerica sasia    easia    europe   namerica africa
+
+africa <- filter (sample_table, region == 'africa')
+easia <- filter(sample_table, region == 'easia')  
+europe <- filter(sample_table, region == 'europe')
+namerica <- filter(sample_table, region == 'namerica')
+samerica <- filter(sample_table, region == 'samerica')
+sasia <- filter(sample_table, region == 'sasia') #India samples
+seasia <- filter(sample_table, region == 'seasia')
+
+
 
 ```
 
+
+
+
 ```{r}
+
+#all_data <- read.csv("Dropbox (Duke Bio_Ea)/coalescent/samples/sample_info.csv", header = TRUE)
+
 #only cambodia samples
-Cambodia <- filter(all_data, all_data$country == 'Cambodia')
-Cambodia
-```
+#Cambodia <- filter(all_data, all_data$country == 'Cambodia')
+#Cambodia
 
-```{r}
 #write out
-write.csv(Cambodia, "Desktop/Cambodia.csv", row.names = FALSE)
+#write.csv(Cambodia, "Desktop/Cambodia.csv", row.names = FALSE)
 
 ```
