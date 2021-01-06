@@ -11,7 +11,7 @@ OUT=./${SAMP}/${SAMP}-samp.g.vcf
 
 module load jdk/1.8.0_45-fasrc01
 
-PICARD_JAR=/data/wraycompute/malaria/Applications/picard/picard.jar
-RUN_PICARD="java -jar -Xmx7g \${PICARD_JAR}"
+
+RUN_PICARD="java -jar -Xmx7g /data/wraycompute/malaria/Applications/picard/picard.jar"
 
 ${RUN_PICARD} RenameSampleInVcf INPUT=${IN} OUTPUT=${OUT} NEW_SAMPLE_NAME=${SAMP}
