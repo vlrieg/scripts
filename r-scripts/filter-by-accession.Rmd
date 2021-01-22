@@ -13,17 +13,29 @@ library(dplyr)
 
 sample_table <- read.csv("../../coalescent/samples/tables/merged-sample-table-noduplicates.csv")
 
-unique((sample_table$region))
+#unique((sample_table$region))
 #seasia   samerica sasia    easia    europe   namerica africa
 
 africa <- filter (sample_table, region == 'africa')
-easia <- filter(sample_table, region == 'easia')  
-europe <- filter(sample_table, region == 'europe')
-namerica <- filter(sample_table, region == 'namerica')
-samerica <- filter(sample_table, region == 'samerica')
-sasia <- filter(sample_table, region == 'sasia') #India samples
-seasia <- filter(sample_table, region == 'seasia')
+write.csv(africa$accession, "../../joint-call/africa-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
 
+easia <- filter(sample_table, region == 'easia')  
+write.csv(easia$accession, "../../joint-call/easia-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+europe <- filter(sample_table, region == 'europe')
+write.csv(europe$accession, "../../joint-call/europe-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+namerica <- filter(sample_table, region == 'namerica')
+write.csv(namerica$accession, "../../joint-call/namerica-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+samerica <- filter(sample_table, region == 'samerica')
+write.csv(samerica$accession, "../../joint-call/samerica-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+sasia <- filter(sample_table, region == 'sasia') #India samples
+write.csv(sasia$accession, "../../joint-call/sasia-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+seasia <- filter(sample_table, region == 'seasia')
+write.csv(seasia$accession, "../../joint-call/seasia-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
 
 
 ```
