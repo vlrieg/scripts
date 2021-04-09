@@ -27,6 +27,45 @@ unique_list <- filter(hardac_dirs, !acc %in% xfer_list$acc)
 unique_list
 
 setwd('/Users/vgartner/Desktop/2020.10.20-SRR-organization/')
-write.table(unique_list, "29-samps-to-scp.txt", sep="",col.names=FALSE,row.names=FALSE,quote=FALSE)
+#write.table(unique_list, "29-samps-to-scp.txt", sep="",col.names=FALSE,row.names=FALSE,quote=FALSE)
+
+```
+
+
+
+I sorted through the sample directories moved to wraycompute2 via xfer node to get the following lists:
+```{r}
+full_list <- as.data.frame(read.csv("/Users/vgartner/Desktop/2020.10.20-SRR-organization/accesions-merged-sample-table-noduplicates.csv")) #994 cols
+to_rerun_list <- as.data.frame(read.csv("/Users/vgartner/Desktop/2020.10.20-SRR-organization/samps-to-rerun.csv")) #268 cols
+done_list <- as.data.frame(read.csv("/Users/vgartner/Desktop/2020.10.20-SRR-organization/samps-gvcf-done.csv")) #208 cols
+
+# 518 samples haven't been run yet
+# total to-run list should have 786 columns
+#
+
+#full_list
+#to_rerun_list
+#done_list
+```
+There are 994 total accessions I want to get gvcfs for.
+So far I have successfuly gotten 208 samples processed.
+268 samples started a run but didn't finish
+518 samples haven't been run yet...
+
+...so the total number I need to run next round is 786.
+I think I'll put them in lists of ~200 so I can check on the progress and move to /nfs/wraycompute2/val/gvcf/ as needed
+
+
+Find the 786 accessions I still need to run
+```{r}
+full_list
+samps_to_run <- filter(full_list, !acc %in% done_list$acc)
+samps_to_run
+setwd('/Users/vgartner/Desktop/2020.10.20-SRR-organization/')
+write.table(samps_to_run, "acc-to-run.txt", sep="",col.names=FALSE,row.names=FALSE,quote=FALSE)
+
+#for future reference, probably not necessary
+samps_never_run <- filter(samps_to_run, !acc %in% to_rerun_list$acc)
+samps_never_run
 
 ```
