@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+import os
+import subprocess
+import sys
+import shlex
+
+def which(program):
+    def is_exe(fpath):
+        return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+
+    fpath, fname = os.path.split(program)
+    if fpath:
+        if is_exe(program):
+            return program
+    else:
+        for path in os.environ["PATH"].split(os.pathsep):
+            path = path.strip('"')
+            exe_file = os.path.join(path, program)
+            if is_exe(exe_file):
+                return exe_file
+
+    return None
+
+def make_script(cmd_args,sbatch_args,modules=[]):
+    if len(cmd_args) < 1:
+        print("Error: no arguments!")
+        exit(1)
+    script = "#!/bin/bash\n"
+    for arg in sbatch_args:
+        script += f"#SBATCH {arg}\n"
+#   modules += ["R","gnuplot"]
+    for module in modules:
+        script += f"module add {module}\n"
+    for arg in cmd_args:
+        if arg and arg[0] in ['<','>']:
+            script = script + f"{arg} "
+        else:
+            script = script + f'"{arg}" '
+    return script
+
+if which('sbatch') is None:
+    print("Error: I can't find the program 'sbatch' to submit your job!")
+    print("Error: Is SLURM installed?")
+    exit(1)
+
+dry_run = False
+modules = []
+cmd = sys.argv[1:]
+sbatch_args = []
+
+while cmd and cmd[0].startswith('-'):
+   arg = cmd.pop(0)
+   if arg == "--dry-run":
+       dry_run = True
+   elif arg == "-h" or arg == "--help":
+       print('Usage:')
+#       print('  export SBATCH_ARGS=arg1,arg2,...argn')
+       print('  sbrun [--sbatch-arg=value] [--module=module] [--dry-run] command arg... ["< file"] ["> file"] ...')
+       exit(1)
+   elif arg.startswith('--module='):
+       modules += [arg[9:]]
+   else:
+       sbatch_args += [arg]
+
+job_name = os.path.basename(os.path.abspath(cmd[0]))
+#sbatch_args = shlex.split(os.environ.get("SBATCH_ARGS","")) + sbatch_args
+sbatch_args =  ["--export=ALL","--workdir={}".format(os.getcwd()), "--job-name={}".format(job_name)] + sbatch_args
+
+sys.stderr.write("Running sbatch with args {}\n".format(sbatch_args))
+sys.stderr.write("Running command {}\n".format(cmd))
+
+script = make_script(cmd, sbatch_args, modules)
+if dry_run:
+    print(script)
+    exit(1)
+else:
+    print(script,file=sys.stderr)
+
+p = subprocess.Popen(["sbatch"], cwd=os.getcwd(), stdin=subprocess.PIPE)
+p.communicate(input=script.encode('utf-8'))

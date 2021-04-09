@@ -8,19 +8,50 @@ output: html_document
 ```{r}
 library(dplyr)
 ```
+
 ```{r}
-all_data <- read.csv("Dropbox (Duke Bio_Ea)/coalescent/samples/sample_info.csv", header = TRUE)
+
+sample_table <- read.csv("../../coalescent/samples/tables/merged-sample-table-noduplicates.csv")
+
+#unique((sample_table$region))
+#seasia   samerica sasia    easia    europe   namerica africa
+
+africa <- filter (sample_table, region == 'africa')
+write.csv(africa$accession, "../../joint-call/africa-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+easia <- filter(sample_table, region == 'easia')  
+write.csv(easia$accession, "../../joint-call/easia-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+europe <- filter(sample_table, region == 'europe')
+write.csv(europe$accession, "../../joint-call/europe-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+namerica <- filter(sample_table, region == 'namerica')
+write.csv(namerica$accession, "../../joint-call/namerica-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+samerica <- filter(sample_table, region == 'samerica')
+write.csv(samerica$accession, "../../joint-call/samerica-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+sasia <- filter(sample_table, region == 'sasia') #India samples
+write.csv(sasia$accession, "../../joint-call/sasia-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
+seasia <- filter(sample_table, region == 'seasia')
+write.csv(seasia$accession, "../../joint-call/seasia-accessions.txt", row.names = FALSE, col.names = NA, quote = FALSE)
+
 
 ```
 
+
+
+
 ```{r}
+
+#all_data <- read.csv("Dropbox (Duke Bio_Ea)/coalescent/samples/sample_info.csv", header = TRUE)
+
 #only cambodia samples
-Cambodia <- filter(all_data, all_data$country == 'Cambodia')
-Cambodia
-```
+#Cambodia <- filter(all_data, all_data$country == 'Cambodia')
+#Cambodia
 
-```{r}
 #write out
-write.csv(Cambodia, "Desktop/Cambodia.csv", row.names = FALSE)
+#write.csv(Cambodia, "Desktop/Cambodia.csv", row.names = FALSE)
 
 ```

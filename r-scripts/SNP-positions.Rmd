@@ -1,0 +1,25 @@
+---
+title: "SNPs along chromosomes"
+output: html_document
+---
+
+
+```{r message=FALSE}
+library(tidyverse)
+library(vcfR)
+library(svglite)
+```
+
+
+```{r}
+setwd("/home/vgartner/wray-lab/joint-call/data/post-joint-call")
+
+by_pop_snps <- read.vcfR("by-pop-merged-chroms-snps-only.g.vcf.gz", verbose = FALSE )
+by_pop_snps
+```
+
+```{r}
+
+by_pop_chrom <- create.chromR(name="LT635615", vcf=by_pop_snps)
+plot(by_pop_chrom)
+```

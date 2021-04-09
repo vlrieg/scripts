@@ -1,0 +1,154 @@
+---
+title: "Unique & Shared Singletons"
+output: html_document
+---
+
+```{r message=FALSE}
+library(tidyverse)
+library(svglite)
+```
+
+
+### Singletons
+
+Data was generated using the command:
+
+> vcftools --gzvcf file.g.vcf.gz --singletons
+
+Note that this data includes "doubletons" as well as singletons, but because P. vivax is haploid, lines with "doubletons" here should still be included in analyses:
+"The file reports both true singletons, and private doubletons (i.e. SNPs where the minor allele only occurs in a single individual and that individual is homozygotic for that allele)." http://vcftools.sourceforge.net/man_latest.html
+
+```{r}
+setwd("/home/vgartner/wray-lab/joint-call/singletons/")
+
+untrimmed_by_pop_singletons <- as.data.frame(read.csv("./untrimmed_singleton_data_and_results/by-pop-chroms-snps-only.singletons", sep = "\t"))
+untrimmed_combined_singletons <- as.data.frame(read.csv("./untrimmed_singleton_data_and_results/combined-chroms-snps-only.singletons", sep = "\t"))
+
+by_pop_singletons <- as.data.frame(read.csv("trimmed-by-pop-chroms-snps-only.singletons.csv", sep = ","))
+combined_singletons <- as.data.frame(read.csv("trimmed-combined-chroms-snps-only.singletons.csv", sep = ","))
+
+names(untrimmed_by_pop_singletons)[5] <- "acc"
+names(by_pop_singletons)[5] <- "acc"
+names(untrimmed_combined_singletons)[5] <- "acc"
+names(combined_singletons)[5] <- "acc"
+
+
+#untrimmed_by_pop_singletons
+by_pop_singletons$ALLELE == "*"
+#untrimmed_combined_singletons
+#combined_singletons
+```
+
+### Singletons unique to each dataset
+```{r}
+untrim_unique_bp <- setdiff(untrimmed_by_pop_singletons, untrimmed_combined_singletons)
+untrim_unique_bp
+unique_to_bp <- setdiff(by_pop_singletons, combined_singletons)
+unique_to_bp
+
+untrim_unique_com <- setdiff(untrimmed_combined_singletons, untrimmed_by_pop_singletons)
+untrim_unique_com
+unique_to_com <- setdiff(combined_singletons, by_pop_singletons)
+unique_to_com
+```
+
+unique snps along chroms
+```{r}
+
+unique_to_bp$condition = c(rep("By Pop", length(nrow(unique_to_bp))))
+unique_to_com$condition = c(rep("Combined", length(nrow(unique_to_com))))
+
+unique_singletons_comparison <- rbind(unique_to_bp, unique_to_com)
+unique_nuclear_only <- filter(unique_singletons_comparison, CHROM != "LT635626" & CHROM != "LT635627")
+unique_nuclear_only
+
+
+
+unique_density_plot <- ggplot(unique_nuclear_only) + 
+  geom_histogram(aes(x=POS, fill=condition), position="dodge") +
+  facet_wrap( ~ CHROM, ncol = 2, scales = "free") + 
+  labs(x = "Position along chromosome", y = "number of singleton", title = "Singletons unique to each condition along chromosomes")
+unique_density_plot
+
+setwd("/home/vgartner/wray-lab/joint-call/singletons/")
+#pdf("unique_singletons_density.pdf")
+#print(unique_density_plot)
+#dev.off()
+ggsave(file="unique_singletons_density.svg", plot=unique_density_plot, width=10, height=8)
+
+```
+
+
+### A lot of the singletons unique to the combined called condition seem to be asterisks (*). How many unique singletons in each condition are asterisks (or stars)?
+
+Note: Asterisks denote overlapping deletions
+https://gatk.broadinstitute.org/hc/en-us/articles/360035531912-Spanning-or-overlapping-deletions-allele-
+
+```{r}
+#untrimmed by population
+untrim_unique_bp$star <- str_count(untrim_unique_bp$ALLELE, "\\*")
+total_unique_to_untrim_bp_stars <- sum(untrim_unique_bp$star)
+total_unique_to_untrim_bp_stars # = 0 out of 7627 unique singletons
+
+#trimmed (masked regions removed) by population
+unique_to_bp$star <- str_count(unique_to_bp$ALLELE, "\\*")
+total_unique_to_bp_stars <- sum(unique_to_bp$star)
+total_unique_to_bp_stars # = 0 of 2487 unique singletons
+
+
+#untrimmed combined
+untrim_unique_com$star <- str_count(untrim_unique_com$ALLELE, "\\*")
+total_unique_to_untrim_com_stars <- sum(untrim_unique_com$star)
+total_unique_to_untrim_com_stars # = 11612 out of 12683 unique singletons
+
+
+#trimmed (masked regions removed) combined
+unique_to_com$star <- str_count(unique_to_com$ALLELE, "\\*")
+total_unique_to_com_stars <- sum(unique_to_com$star)
+total_unique_to_com_stars # = 5674 out of 6194 unique singletons
+unique_to_com$trim = c(rep("Trimmed", length(nrow(unique_to_com))))
+
+
+```
+
+
+stars along chroms in combined condition unique singletons (trimmed vs untrimmed)
+```{r}
+
+
+untrim_unique_com$trim = c(rep("Untrimmed", length(nrow(untrim_unique_com))))
+unique_to_com$trim = c(rep("Trimmed", length(nrow(unique_to_com))))
+
+combined_trim_untrim_comparison <- rbind(untrim_unique_com, unique_to_com)
+nuclear_only <- filter(combined_trim_untrim_comparison, CHROM != "LT635626" & CHROM != "LT635627")
+nuclear_only
+
+nuclear_stars <- filter(nuclear_only, ALLELE == "*")
+nuclear_stars
+
+
+org_snp_density_plot <- ggplot(nuclear_only) +
+  geom_histogram(aes(x=POS, fill=trim), position = "dodge") +
+  facet_wrap( ~ CHROM, ncol = 2, scales = "free") + 
+  labs(x = "Position along chromosome", y = "Number of singletons", title = "Singletons unique to Cmbined condition: trimmed vs untrimmed")
+#org_snp_density_plot
+
+#setwd("/home/vgartner/wray-lab/joint-call/singletons/")
+#pdf("snp_density_unique_to_combined_condition.pdf")
+#print(org_snp_density_plot)
+#dev.off()
+
+
+star_density_plot <- ggplot(nuclear_stars) + 
+  geom_histogram(aes(x=POS, fill=trim), position="dodge") +
+  facet_wrap( ~ CHROM, ncol = 2, scales = "free") + 
+  labs(x = "Position along chromosome", y = "number of singletons that are stars", title = "combined condition: singletons that are stars (trimmed vs untrimmed)")
+star_density_plot
+
+setwd("/home/vgartner/wray-lab/joint-call/singletons/")
+pdf("singleton_density_unique_to_combined_condition_stars.pdf")
+print(star_density_plot)
+dev.off()
+  
+
+```
