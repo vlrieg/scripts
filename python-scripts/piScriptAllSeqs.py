@@ -73,10 +73,10 @@ for index_1 in range(mtDNA_length):           # for loop to index the first sequ
 
 # calculate pi
 # disagree / agree + disagree
-# then average over the number of comparisons
+# then average over the number of pi values
 # 0.001-0.003 is reasonable (0.001 is more reasonable)
 pi_sum = sum(pi_list)
-pi_avg = pi_sum / loop_count  
+pi_avg = pi_sum / len(pi_list) 
 print(f"The average value of pi for {loop_count} comparisons of {mtDNA_length} sequences is:", pi_avg)
 
 # calculate the standard deviation
@@ -87,7 +87,7 @@ for pi in range(len(pi_list)):
     variance_list.append(mean_dist_sq)
 
 var_sum = sum(variance_list)
-standard_deviation = math.sqrt(var_sum / loop_count)
+standard_deviation = math.sqrt(var_sum / len(pi_list))
 
 print(f"The standard deviation is: {standard_deviation}")
 
