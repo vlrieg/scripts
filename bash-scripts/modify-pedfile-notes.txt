@@ -1,0 +1,23 @@
+# sort population file according to accession number (ERR## to SRR## bigger number last)
+# column 1 is population
+# column 2 is accession
+sort -k 2 populations.txt > sorted-populations.txt
+
+# join the two files and output into ned ped file
+# https://unix.stackexchange.com/a/113903
+join -j 2 sorted-populations.txt 2021_05_03_africa-combined-joint-called.ped > family.ped
+
+# print the first 3 columns to make sure everything looks good
+awk '{ print $1, $2, $3 }' family.ped
+
+# print everything but the first column of accession numbers
+awk '{$1=""; print $0}' family.ped > family.modified.ped
+
+# rename original ped file for backup
+mv 2021_05_03_africa-combined-joint-called.ped backup-2021_05_03_africa-combined-joint-called.ped
+
+# rename modified ped file so it matches the other bim/fam/etc files
+mv family.modified.ped 2021_05_03_africa-combined-joint-called.ped
+
+# remove intermediate ped to prevent confusion
+rm -rf family.ped

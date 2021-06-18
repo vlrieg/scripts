@@ -88,7 +88,7 @@ plink --bfile ${NAME}.genotypes \
 
 #10 perform pca with plink
 echo ">>> performing pca with plink <<<"
-plink --bfile ${NAME}.genotypes 	
+plink --bfile ${NAME}.genotypes --pca --allow-extra-chr
 # *** NOTE: if you don't have 50 individuals, you will get an error at this step!
 
 #11 generate plots in R

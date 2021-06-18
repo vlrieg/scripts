@@ -1,0 +1,128 @@
+---
+title: "SE Asia PCA"
+output:
+  pdf_document: default
+  html_document: default
+---
+Tutorial: 
+
+https://www.biostars.org/p/335605/
+
+```{r}
+library(tidyverse)
+setwd("/Users/vgartner/Dropbox (Duke Bio_Ea)/pca/seasia-pca/")
+```
+
+
+```{r}
+options(scipen=100, digits=3)
+
+# read in the eigenvectors, produced in PLINK
+eigenvec <- read.table('seasia.plink.eigenvec', header = FALSE, skip=0, sep = ' ')
+#eigenvec <-  subset(eigenvec, select = -c(V1)) # remove leftmost column to replace with population info
+rownames(eigenvec) <- eigenvec[,2]
+
+eigenvec <- eigenvec[,3:ncol(eigenvec)]
+colnames(eigenvec) <- paste('Principal Component ', c(1:20), sep = '')
+
+# percentage of variance explained
+# https://speciationgenomics.github.io/pca/
+eigenval <- scan("seasia.plink.eigenval")
+pve <- data.frame(PC = 1:20, pve = eigenval/sum(eigenval)*100)
+total_pve <- data.frame(PC = 1:20, cumulative_pve <- cumsum(pve$pve))
+
+scree_plot <- ggplot(pve, aes(x=PC, y=pve)) + 
+  geom_bar(stat="identity") + 
+  geom_text(size = 3, aes(label=paste(round(pve, digits = 1),'%', sep="")), position=position_dodge(width=0.9), vjust=-0.25) +
+  ylab("Percentage variance explained") + theme_light() + 
+  ggtitle("Percentage of variance explained by each principal component")  +
+  geom_line(total_pve, mapping = aes(x=PC, y=cumulative_pve), color="blue")
+scree_plot
+#total_pve
+#a + geom_line(total_pve, mapping = aes(x=PC, y=cumulative_pve), color="blue") 
+
+```
+
+```{r}
+# population info - use instead of PED file since the PED file is huge and take a long time to load 
+pop_table <- read.table('seasia-populations.csv', header = FALSE, skip=0, sep = ',')
+#eigenvec <- dplyr::inner_join(eigenvec, pop_table, by = "V2") # V2 is accession number
+
+# read in the PED data
+# join with population file I made 
+#PED <- read.table('2021_05_03_africa-combined-joint-called.ped', header = FALSE, skip = 0, sep = '\t')
+#PED
+
+col_names <- c("Population", "Individual")
+names(pop_table) <- col_names
+#pop_table
+
+PED <- pop_table[which(pop_table$Individual %in% rownames(eigenvec)), ]
+#PED
+PED <- PED[match(rownames(eigenvec), PED$Individual),]
+#PED
+all(PED$Individual.ID == rownames(eigenvec)) == TRUE
+
+# set colours
+
+#unique(PED$Population)
+PED$Population <- factor(PED$Population, levels=c(
+  "Indonesia", "PapuaNewGuinea", "Thailand", "Vietnam", "Myanmar", "Malaysia", "China", "Cambodia"))
+
+col <- colorRampPalette(c(
+  "yellow", "forestgreen", "grey", "royalblue","black", "red", "purple", "pink"))(length(unique(PED$Population)))[factor(PED$Population)]
+
+# generate PCA bi-plots
+project.pca <- eigenvec
+#summary(project.pca)
+project.pca
+
+par(mar = c(5,5,5,5), cex = 2.0,
+  cex.main = 7, cex.axis = 2.75, cex.lab = 2.75, mfrow = c(1,2))
+
+```
+
+```{r}
+plot(project.pca[,1], project.pca[,2],
+  type = 'n',
+  main = 'PCA of SE Asian P. vivax whole genome variation',
+  adj = 0.5,
+  xlab = 'First component',
+  ylab = 'Second component',
+  font = 1,
+  font.lab = 1)
+points(project.pca[,1], project.pca[,2], col = col, pch = 20, cex = 2.25)
+#text(project.pca, labels=rownames(project.pca), cex=0.9, font=2, pos=3)
+legend('bottom',
+  inset=-.22, 
+  xpd=TRUE, 
+  horiz = TRUE,
+  bty = 'n',
+  cex = 1.0,
+  title = '',
+  c("Ind", "PNG", "Thai", "Viet", "Myan", "Malay", "Chi", "Camb"),
+  fill = c("yellow", "forestgreen", "grey", "royalblue","black", "red", "purple", "pink"))
+```
+
+```{r}
+plot(project.pca[,1], project.pca[,3],
+  type="n",
+  main="PCA of SE Asian P. vivax whole genome variation",
+  adj=0.5,
+  xlab="First component",
+  ylab="Third component",
+  font=1,
+  font.lab=1)
+points(project.pca[,1], project.pca[,3], col=col, pch=20, cex=2.25)
+legend('bottom',
+  inset=-.22, 
+  xpd=TRUE, 
+  horiz = TRUE,
+  bty = 'n',
+  cex = 1.0,
+  title = '',
+  c("Ind", "PNG", "Thai", "Viet", "Myan", "Malay", "Chi", "Camb"),
+  fill = c("yellow", "forestgreen", "grey", "royalblue","black", "red", "purple", "pink"))
+
+
+```

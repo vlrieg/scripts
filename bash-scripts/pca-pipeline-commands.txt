@@ -1,0 +1,64 @@
+# use this tutorial: https://www.biostars.org/p/335605/
+# note PCA wants at least 50 individuals to impute allele frequencies from!
+
+### note on PLINK path variables/version:
+#/Users/vgartner/.bash_profile contains the lines:
+# alias plink="/Users/vgartner/bin/plink2"
+# alias plink1.9="/Users/vgartner/bin/plink1.9"
+# to add PLINK to my path 
+
+### remove masked regions
+vcftools --gzvcf ethiopia-haploid-combined-joint-called.g.vcf.gz --out ethiopia-haploid_jointcall_masked-reg-removed --exclude-bed PVP01.genome.mask.sorted.bed --recode --keep-INFO-all
+
+### extract chromosomes only (no contigs)
+bgzip ethiopia-haploid_jointcall_masked-reg-removed.recode.vcf
+bcftools index ethiopia-haploid_jointcall_masked-reg-removed.recode.vcf.gz
+bcftools view ethiopia-haploid_jointcall_masked-reg-removed.recode.vcf.gz --regions-file PVP01.chroms.bed > ethiopia-haploid_jointcall_masked-reg-removed.recode.chroms-only.vcf
+
+
+### keep snps only
+bcftools view -m2 -M2 -v snps ethiopia-haploid_jointcall_masked-reg-removed.recode.chroms-only.vcf > ethiopia-haploid-jc-maskedrm-chromsonly-snps.vcf
+#https://www.biostars.org/p/141156/#141164
+
+#make chromosome map
+bcftools view -H ethiopia-haploid-jc-maskedrm-chromsonly-snps.vcf | cut -f 1 | uniq | awk '{print $0"\t"$0}' > ethiopia-haploid-snp.chrom-map.txt
+
+#make ped file
+vcftools --vcf ethiopia-haploid-jc-maskedrm-chromsonly-snps.vcf --plink --chrom-map ethiopia-haploid-snp.chrom-map.txt --out ethiopia-hap
+
+
+
+#4. (tutorial) convert to BCF and do some renaming
+bcftools norm -m-any --check-ref w -f PVP01.fasta ethiopia-haploid-jc-maskedrm-chromsonly-snps.vcf.gz | bcftools annotate -x ID -I +'%CHROM:%POS:%REF:%ALT' | bcftools norm -Ob --rm-dup both > ethiopia-hap-filtered.bcf
+
+bcftools index ethiopia-hap-filtered.bcf
+
+#5 convert to PLINK format
+plink --bcf ethiopia-hap-filtered.bcf \
+      --vcf-idspace-to _ \
+      --const-fid \
+      --allow-extra-chr \
+      --make-bed \
+      --out ethiopia-hap-filtered.bcf.genotypes
+      
+#6 NA (not in tutorial - artifact from previous tutorials)
+
+#7 prune variants with MAF < 10%
+plink1.9 --bfile ethiopia-hap-filtered.bcf.genotypes \
+      --maf 0.10 --indep 50 5 1.5 \
+      --allow-extra-chr \
+      --out ethiopia-hap-filtered.bcf.pruned.genotypes
+      
+plink1.9 --bfile ethiopia-hap-filtered.bcf.genotypes \
+      --extract ethiopia-hap-filtered.bcf.pruned.genotypes.prune.in \
+      --make-bed \
+      --allow-extra-chr \
+      --out ethiopia-hap-filtered.bcf.pruned2.genotypes
+      
+#8 & 9 are merging individual chromosome files, which I didn't do here
+
+#10 perform pca with plink
+plink --bfile ethiopia-hap-filtered.bcf.pruned2.genotypes --pca --allow-extra-chr
+# *** NOTE: if you don't have 50 individuals here, you will get an error!
+
+#11 generate plots in R

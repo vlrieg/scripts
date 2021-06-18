@@ -1,0 +1,5 @@
+# IMPORTANT!!!!!!
+# Sort samples within VCF to match order you want to display in the final figure (by population)
+# then make sure the population file you feed into CLUMPAK has accessions in the same order as "sorted-samples-to-keep.txt" used here
+
+bcftools view -S sorted-samples-to-keep.txt 2021_05_03_africa-combined-joint-called_masked-rm.recode.chroms-only.snps.vcf > sorted-africa-sasia.vcf

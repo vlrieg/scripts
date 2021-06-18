@@ -1,0 +1,8 @@
+distructRerun.py -a ./ -d 1621539253/ -k 1 -K 6
+
+cvSum.py -c cv_file.txt -o cv_output.txt
+
+
+#for ppt
+cd 1621539253/
+for i in K* ; do cp ${i}/MajorCluster/distructOutput.pdf . ; mv distructOutput.pdf ${i}-distructOutput.pdf ; done

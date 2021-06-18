@@ -1,5 +1,5 @@
 ---
-title: "Not In Data Process"
+title: "find unique acc"
 author: "Valerie Gartner"
 date: "4/30/2019"
 output: html_document
@@ -11,16 +11,19 @@ library(dplyr)
 
 ```{r}
 
+setwd("/Users/vgartner/Desktop/")
 #read in files as data frames
-fastq <- as.data.frame(read.csv('~/Desktop/fastq-files.csv')) #all unprocessed data
-dedup <- as.data.frame(read.csv('~/Desktop/deduped-files.csv')) #the data that has been processed successfully
+fastq <- as.data.frame(read.csv('full-table.csv')) #all unprocessed data
+dedup <- as.data.frame(read.csv('mapped-table.csv')) #the data that has been processed successfully
 
 #give column names
-names(dedup) <- c("dedup-files")
-names(fastq) <- c("fastq-files")
+names(fastq) <- c("fastq_files")
+names(dedup) <- c("dedup_files")
+
+length(fastq$fastq_files)
 
 #filter for unique values
-unprocessed <- fastq %>% filter(!(fastq$`fastq-files` %in% dedup$`dedup-files`)) # which accession Nos were not processed?
+unprocessed <- fastq %>% filter(!(fastq$fastq_files %in% dedup$dedup_files)) # which accession Nos were not processed?
 
 unprocessed
 # looks like:
@@ -33,5 +36,7 @@ unprocessed
 #SRR6361543				
 #SRR6361550				
 #SRR6361608				
+
+write.table(unprocessed, "to-do-acc.txt", sep=",",col.names=FALSE,row.names=FALSE,quote=FALSE)
 
 ```

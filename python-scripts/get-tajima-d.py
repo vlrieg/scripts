@@ -3,15 +3,6 @@
 import argparse
 import math
 
-
-parser = argparse.ArgumentParser(description="calculate Tajima's D")
-
-parser.add_argument("--pi", help="value of pi") # args.pi
-parser.add_argument("--segregating_sites", help="value for S") # args.segregating_sites
-parser.add_argument("--no_samples", help="how many sequences/individuals you have") # args.no_samples
-
-args = parser.parse_args()
-
 # Tajima's D equation 5.5 from:
 # https://ocw.mit.edu/courses/health-sciences-and-technology/hst-508-quantitative-genomics-fall-2005/study-materials/tajimad1.pdf
 # running this script with values from the first example gives me the correct output:
@@ -23,6 +14,14 @@ args = parser.parse_args()
 # Hartl defines pi as the fraction of nt site differences and S as the fraction of sites segregating (SNPs/total bp)
 # Tajima defines pi as the mean number of sites that differ and S as the number of sites segregating
 # As long as both pi and S were calculated using EITHER Hartl's OR Tajima's method, the answer from this equation will be the same
+
+parser = argparse.ArgumentParser(description="calculate Tajima's D")
+
+parser.add_argument("--pi", help="value of pi") # args.pi
+parser.add_argument("--segregating_sites", help="value for S") # args.segregating_sites
+parser.add_argument("--no_samples", help="how many sequences/individuals you have") # args.no_samples
+
+args = parser.parse_args()
 
 ### convert argparse input to variables
 pi = float(args.pi)
