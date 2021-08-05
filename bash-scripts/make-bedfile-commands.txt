@@ -1,0 +1,45 @@
+# test loop
+for i in chr*/ ; do (cd ${i} ; head *PvP01.mask) ; done
+
+# remove fasta headers
+for chr in chr*/ ; do (cd ${chr} ; grep -vh "^>" *.PvP01.mask >> allregions.PvP01.mask) ; done
+# grep -v "^>" *.PvP01.mask >> ${chr}.all.PvP01.mask
+# -v means it will select everything except lines with > at the beginning of the line
+# -h means it won't print the filename in the output
+
+
+# add chromosome name followed by tab to start of each line - by hand in each chr dir for now
+sed -e 's/^/LT635612\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr1
+sed -e 's/^/LT635613\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr2
+sed -e 's/^/LT635614\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr3
+sed -e 's/^/LT635615\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr4
+sed -e 's/^/LT635616\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr5
+sed -e 's/^/LT635617\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr6
+sed -e 's/^/LT635618\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr7
+sed -e 's/^/LT635619\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr8
+sed -e 's/^/LT635620\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr9
+#sed -e 's/^/LT635621\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr10 - no mask file apparently
+sed -e 's/^/LT635622\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr11
+sed -e 's/^/LT635623\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr12
+sed -e 's/^/LT635624\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr13
+sed -e 's/^/LT635625\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #chr14
+#sed -e 's/^/LT635626\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #apicoplast - no mask file
+#sed -e 's/^/LT635627\t/' allregions.PvP01.mask > chroms-allregions.PvP01.mask #mitochondria - no mask file
+# double check that this worked
+for chr in chr*/ ; do echo ${chr}chroms*.mask ; head -n 3 ${chr}chroms*.mask ; done
+
+# change seperators between start and end position to tab
+for chr in chr*/ ; do (cd ${chr} ; sed -e 's/\ -\ /\t/' chroms-allregions.PvP01.mask > chroms-allregions.PvP01.mask.bed) ; done
+# double check that this worked
+for chr in chr*/ ; do echo ${chr}chroms*.mask ; head -n 3 ${chr}chroms*.mask.bed ; done
+
+# concatenate all files together to make one genome-wide bed file of regions to be masked
+for chr in chr*/ ; do cat ${chr}/chroms-allregions.PvP01.mask.bed >> PvP01-genome.mask.bed ; done
+
+# rename chromosome bed files so it's clear which chromosome the file is for
+for chr in chr*/ ; do (cd ${chr} ; mv chroms-allregions.PvP01.mask.bed ${chr%%/}-PvP01.mask.bed) ; done
+
+# make one directory with the chromosome & genome bed files to put on hardac
+mkdir mask-bedfiles
+cp PvP01-genome.mask.bed mask-bedfiles/
+for chr in chr*/ ; do cp ${chr}chr*.bed ../mask-bedfiles/ ; done
