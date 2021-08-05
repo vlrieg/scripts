@@ -1,0 +1,11 @@
+plink --bfile global-subsample-combined-jc.pruned.genotypes --missing --allow-extra-chr
+#https://zzz.bwh.harvard.edu/plink/summary.shtml#missing
+
+
+# vcftools
+# http://vcftools.sourceforge.net/man_latest.html#OUTPUT%20OPTIONS
+# missingness by individual
+vcftools --gzvcf global-subsample-combined-jc_masked-rm.recode.chroms-only.snps.vcf.gz --missing-indv
+
+# missingness by site
+vcftools --gzvcf global-subsample-combined-jc_masked-rm.recode.chroms-only.snps.vcf.gz --missing-site
