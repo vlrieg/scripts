@@ -47,6 +47,10 @@ missingness_table.rename(columns={'F_MISS': 'FRACTION_MISSING'}, inplace=True)
     #return 
 
 
+under_5perc_missing_table = missingness_table[missingness_table.FRACTION_MISSING <= 0.05]
+print(under_5perc_missing_table.shape)
+print(under_5perc_missing_table.info())
+
 chrom_list = set(missingness_table['CHR'])
 #print(chrom_list)
 
@@ -105,7 +109,7 @@ for each_chr in chrom_list:
                     pos_s = range_list_to_print[line][1]
                     pos_e = range_list_to_print[line][2]
                     rlength = range_list_to_print[line][3]
-                    out_writer.writerow([chr_name, pos_s, pos_e, rlength])
+                    #out_writer.writerow([chr_name, pos_s, pos_e, rlength])
 
                     if rlength > 0:
                         range_len_dict[rlength] += 1
