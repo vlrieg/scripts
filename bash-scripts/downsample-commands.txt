@@ -1,0 +1,22 @@
+sort -R min_filt_no-singletons.recode.pruned.genotypes.bim | head -n 100000 | awk '{print $2}' > random100k.snps 
+#https://www.biostars.org/p/16038/#16085
+
+# change format
+# old: chr:pos
+# now: chr	pos
+sed "s/\:/\t/g" random100k.snps > random100k.snps.txt
+
+# extract random positions
+bcftools view -R random100k.snps.txt min_filt_no-singletons.recode.vcf.gz > random100k_min_filt_no-singletons.recode.vcf
+
+# SORT positions with vcftools 'vcf-sort' tool
+cat random100k_min_filt_no-singletons.recode.vcf | vcf-sort > random100k-SORTED_min_filt_no-singletons.recode.vcf
+
+# copy popmap file for each subdir
+for i in k_*/ ; do cp popmap.txt ${i} ; done
+
+# make a symlink to vcf file for each subdirectory
+for i in k_*/ ; do (cd ${i} ; ln -s ../random100k-SORTED_min_filt_no-singletons.recode.vcf .) ; done
+
+# run for each set of k values
+for i in k_*/ ; do (cd ${i} ; sbatch ./run-admixturePipeline.sh random100k-SORTED_min_filt_no-singletons.recode.vcf) ; done

@@ -26,23 +26,26 @@ if [ ! -e ${NAME}.g.vcf.gz.tbi ] ; then
 fi
 
 #remove masked regions
-if [ ! -e ${NAME}_masked-rm.recode.vcf ] ; then
+if [ ! -e ${NAME}_masked-rm.recode.vcf ] && [ ! -e ${NAME}_masked-rm.recode.vcf.gz ] ; then 
   echo ">>> removing masked regions <<<"
   vcftools --gzvcf ${NAME}.g.vcf.gz --out ${NAME}_masked-rm --exclude-bed PVP01.genome.mask.sorted.bed --recode --keep-INFO-all
   #out file will look like
   #ethiopia-haploid-combined-joint-called_masked-rm.recode.vcf
 fi
 
-#extract chromosomes only (no contigs)
-if [ ! -e ${NAME}_masked-rm.recode.chroms-only.vcf ] && [ ! -e ${NAME}_masked-rm.recode.chroms-only.snps.vcf ] ; then
-  echo ">>> extract chromosomes only <<<"
+if [ ! -e ${NAME}_masked-rm.recode.vcf.gz ] ; then
   bgzip ${NAME}_masked-rm.recode.vcf
   bcftools index ${NAME}_masked-rm.recode.vcf.gz
+fi
+
+#extract chromosomes only (no contigs)
+if [ ! -e ${NAME}_masked-rm.recode.chroms-only.vcf ] && [ ! -e ${NAME}_masked-rm.recode.chroms-only.vcf.gz ] && [ ! -e ${NAME}_masked-rm.recode.chroms-only.snps.vcf ] ; then
+  echo ">>> extract chromosomes only <<<"
   bcftools view ${NAME}_masked-rm.recode.vcf.gz --regions-file PVP01.chroms.bed > ${NAME}_masked-rm.recode.chroms-only.vcf
 fi
 
 #keep snps only
-if [ ! -e ${NAME}_masked-rm.recode.chroms-only.snps.vcf ] ; then
+if [ ! -e ${NAME}_masked-rm.recode.chroms-only.snps.vcf ] && [ ! -e ${NAME}_masked-rm.recode.chroms-only.snps.vcf.gz ]; then
   echo ">>> keep snps only <<<"
   bcftools view -m2 -M2 -v snps ${NAME}_masked-rm.recode.chroms-only.vcf > ${NAME}_masked-rm.recode.chroms-only.snps.vcf 
   #https://www.biostars.org/p/141156/#141164
@@ -54,7 +57,12 @@ if [ -e ${NAME}_masked-rm.recode.chroms-only.vcf ] ; then
 fi
 
 # vcftools missingness
+if [ ! -e ${NAME}_masked-rm.recode.chroms-only.snps.vcf.gz ] ; then
+  bgzip ${NAME}_masked-rm.recode.chroms-only.snps.vcf
+  tabix -p vcf ${NAME}_masked-rm.recode.chroms-only.snps.vcf.gz
+fi
+
 # individual missingness
-vcftools --gzvcf ${NAME}_masked-rm.recode.chroms-only.vcf --missing-indv
+vcftools --gzvcf ${NAME}_masked-rm.recode.chroms-only.snps.vcf.gz --missing-indv
 # site missingness
-vcftools --gzvcf ${NAME}_masked-rm.recode.chroms-only.vcf --missing-site
+vcftools --gzvcf ${NAME}_masked-rm.recode.chroms-only.snps.vcf.gz --missing-site

@@ -11,9 +11,7 @@ infile=$1
 
 # individual missingness
 vcftools --gzvcf ${infile} --missing-indv
-mv out.imiss ${infile}-out.imiss
 
 
 # site missingness
 vcftools --gzvcf ${infile} --missing-site
-mv out.lmiss ${i}-out.lmiss
